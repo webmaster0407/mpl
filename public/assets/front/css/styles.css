@@ -2166,3 +2166,35 @@ input:-webkit-autofill:active {
     flex: 100%;
   }
 }
+
+/********** Dropzone fix ****************/
+.dropzone .dz-preview .dz-remove {
+  text-decoration: none;
+}
+.dropzone .dz-preview.dz-image-preview {
+  background-color: transparent;
+}
+.uploaded_photos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.photo_item {
+  position: relative;
+}
+.photo_action_btn {
+  position: absolute;
+  z-index: 100;
+  top: 10px;
+  right: 10px;
+  width: 54px;
+  height: 54px;
+  background: rgba(0,0,0,.8);
+  border-radius: 50%;
+}
+.form-group-editor textarea {
+  background-color: transparent;
+  padding: 10px 20px;
+  border: 1px solid var(--blueprimary);
+  outline: none;
+}
