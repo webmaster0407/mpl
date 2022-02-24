@@ -4,8 +4,12 @@
         <div class="header-right">
             <ul id="main-menu">
                 @if( Auth::user() !== null )
-                <li>
-                    <a href="{{ route('profile') }}" class="logout-link">{{ __('My Account')}}</a>
+                <li class="dropdown">
+                    <a href="javascript:void(0)">{{ __('My Account')}}<i class="icon-arrowdown"></i></a>
+                    <ul>
+                        <li><a href="{{ route('editTalentprofile') }}">{{ __('Edit Profile')}}</a></li>
+                        <li><a href="{{ route('changePassword') }}">{{ __('Change Password')}}</a></li>
+                    </ul>
                 </li>
                 <li>
                     <a href="{{ route('logout') }}" class="logout-link">Logout<i class="icon-logout"></i></a>
