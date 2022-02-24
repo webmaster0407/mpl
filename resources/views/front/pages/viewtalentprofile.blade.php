@@ -3,43 +3,38 @@
 
 {{-- Content --}}
 @section('content')
-<style type="text/css">
-	#talent_profile_eidt, 
-	#talent_profile_view {
-		margin: auto;
-		width: 40%;
-	}
-</style>
 <section id="section-talentcategories">
-	<div id="talent_profile_view">
-		<h1>{{ Auth::user()->name }}</h1>
-		<h2>{{ Auth::user()->email }}</h2>
-		@if(isset($userdata))
-		<h4>{{ $userdata->phone }}</h4>
-		<h4>{{ $userdata->birthday_year }}</h4>
-		<h4>{{ $userdata->gender }}</h4>
-		<h4>{{ $userdata->height }}</h4>
-		<h4>{{ $userdata->weight }}</h4>
-		<h4>{{ $userdata->chest }}</h4>
-		<h4>{{ $userdata->hips }}</h4>
-		<h4>{{ $userdata->shoes }}</h4>
-		<h4>{{ $userdata->job_reference }}</h4>
-		<hr />
-		@endif
-		<div class="talent_profile_view_photos">
-			@if($photos !== null && (count($photos) > 0) )
-				@foreach($photos as $photo)
-					<div style="width: 300px; height: 300px;">
-						<img src="{{ route('base_url') . '/' . $photo->path }}" data-val="{{ $photo->id }}" style="width: 100%; height: auto;">
-					</div>
-				@endforeach
-			@else
-				<h5>{{ __('No photos uploaded')}}.</h5>
+	<div class="container">
+		<div id="talent_profile_view">
+			<h1>{{ Auth::user()->name }}</h1>
+			<h2>{{ Auth::user()->email }}</h2>
+			@if(isset($userdata))
+			<h4>{{ $userdata->phone }}</h4>
+			<h4>{{ $userdata->birthday_year }}</h4>
+			<h4>{{ $userdata->gender }}</h4>
+			<h4>{{ $userdata->height }}</h4>
+			<h4>{{ $userdata->weight }}</h4>
+			<h4>{{ $userdata->chest }}</h4>
+			<h4>{{ $userdata->hips }}</h4>
+			<h4>{{ $userdata->shoes }}</h4>
+			<h4>{{ $userdata->job_reference }}</h4>
+			<hr />
 			@endif
+			<div class="talent_profile_view_photos">
+				@if($photos !== null && (count($photos) > 0) )
+					@foreach($photos as $photo)
+						<div style="width: 300px; height: 300px;">
+							<img src="{{ route('base_url') . '/' . $photo->path }}" data-val="{{ $photo->id }}" style="width: 100%; height: auto;">
+						</div>
+					@endforeach
+				@else
+					<h5>{{ __('No photos uploaded')}}.</h5>
+				@endif
+			</div>
+			<div class="actions">
+				<a href="{{ route('editTalentprofile') }}" class="btn btn-secondary">{{ __('Edit Profile')}}</a>
+			</div>
 		</div>
-        <div class="actions">
-        	<a href="{{ route('editTalentprofile') }}" class="btn btn-secondary">{{ __('Edit Profile')}}</a>
-        </div>
 	</div>
 </section>
 <script type="text/javascript">

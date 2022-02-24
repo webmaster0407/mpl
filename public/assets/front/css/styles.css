@@ -747,6 +747,7 @@ header > .container {
 .mobile-menu-wrapper ul {
   list-style: none;
   margin-bottom: 0;
+  padding: 0;
 }
 
 .mobile-menu-wrapper ul:not(.language-switcher) li {
@@ -917,6 +918,11 @@ header > .container {
     background-color: #ffffff;
     left: calc(100% + 30px);
 }
+@media (max-width: 575px) {
+  #section-talentservice {
+    min-height: 600px;
+  }
+}
 /************************* Copywriting Section ********************************/
 #section-copywriting {
     clip-path: polygon(0 0, 100% 90px, 100% 100%, 0 calc(100% - 90px));
@@ -1010,6 +1016,15 @@ header > .container {
         height: auto;
         max-height: 100%;
     }
+}
+@media (max-width: 575px) {
+  .section-title-style-1:after {
+    display: none;
+  }
+  .section-title-style-2:before,
+  .section-title-style-2:after {
+    display: none;
+  }
 }
 /************************* Footer ********************************/
 #section-footertop {
