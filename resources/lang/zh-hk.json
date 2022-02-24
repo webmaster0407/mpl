@@ -10,6 +10,7 @@
 	"Sign Out" : "hk-Sign Out",
 	"Account settings and more" : "hk-Account settings and more",
 	"update" : "hk-update",
+	"JOIN NOW": "現在加入",
 	
 	"Admin | Home" : "hk-Admin | Home",
 	"Site management" : "hk-Site management",
@@ -56,7 +57,7 @@
 	"Register as client": "hk-Register as client",
 	"Register as talent": "hk-Register as talent",
 	"Find Talent": "hk-Find Talent",
-	"Learn More": "hk-Learn More",
+	"Learn More": "了解更多",
 	"Talent": "hk-Talent",
 	"Service": "hk-Service",
 	"Copywriting": "hk-Copywriting",

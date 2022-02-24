@@ -8,7 +8,7 @@
     <div class="container">
         <h1 class="section-title">
             @if( isset($sectionData1->title) && ( $sectionData1->title !== "" ) )
-                {{ __($sectionData1->title) }}
+                {!! $sectionData1->title !!}
             @else
                 <span class="color-bluelight">{{ __('Welcome to')}}</span> {{__('MPL')}}
             @endif
@@ -27,7 +27,7 @@
     <div class="container">
         <h1 class="section-title section-title-style-1">
             @if( isset($sectionData2->title) && ( $sectionData2->title !== "" ) )
-                {{ __($sectionData2->title) }}
+                {!! $sectionData2->title !!}
             @else
                 <span class="color-bluelight">{{ __('Visual')}} <span class="color-blue">{{ __('Service')}}</span>
             @endif
@@ -46,7 +46,7 @@
     <div class="container">
         <h1 class="section-title section-title-style-2">
             @if( isset($sectionData3->title) && ( $sectionData3->title !== "" ) )
-                {{ __($sectionData3->title) }}
+                {!! $sectionData3->title !!}
             @else
                 <span class="color-bluelight">{{ __('Talent')}}</span> {{ __('Service')}}
             @endif

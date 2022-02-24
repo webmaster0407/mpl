@@ -10,6 +10,7 @@
 	"Sign Out" : "ch-Sign Out",
 	"Account settings and more" : "ch-Account settings and more",
 	"update" : "ch-update",
+	"JOIN NOW": "现在加入",
 	
 	"Admin | Home" : "ch-Admin | Home",
 	"Site management" : "ch-Site management",
@@ -56,7 +57,7 @@
 	"Register as client": "cn-Register as client",
 	"Register as talent": "cn-Register as talent",
 	"Find Talent": "cn-Find Talent",
-	"Learn More": "cn-Learn More",
+	"Learn More": "了解更多",
 	"Talent": "cn-Talent",
 	"Service": "cn-Service",
 	"Copywriting": "cn-Copywriting",

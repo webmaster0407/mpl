@@ -2198,3 +2198,11 @@ input:-webkit-autofill:active {
   border: 1px solid var(--blueprimary);
   outline: none;
 }
+
+/************************************************************
+ * CMS page
+ ***********************************************************/
+ .cms-page-title {
+   text-transform: capitalize;
+   margin-bottom: 20px;
+ }

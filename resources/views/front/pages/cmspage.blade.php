@@ -3,11 +3,12 @@
 
 {{-- Content --}}
 @section('content')
-	<div class="breadcrumb">
-		<h1>{{ $cmsPage->page_sub_group }}</h1>
-		<h2>{{ $cmsPage->page_sub_title }}</h2>
+<section id="section-talentcategories" class="d-flex align-items-center">
+    <div class="container">
+		<h3 class="cms-page-title">{{ $cmsPage->page_sub_title }}</h3>
+		<div class="cms-page-content">
+			<?php echo  $cmsPage->description ; ?>	
+		</div>
 	</div>
-	<div class="container">
-		<?php echo  $cmsPage->description ; ?>	
-	</div>
+</section>
 @endsection

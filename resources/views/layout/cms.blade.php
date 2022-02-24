@@ -22,8 +22,5 @@
 @include('front.inc.app_header')
     @yield('content')
 @include('front.inc.app_footer')
-<footer>
-</footer>
-
 </body>
 </html>
