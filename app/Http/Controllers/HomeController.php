@@ -453,17 +453,17 @@ class HomeController extends Controller
     public function uploadPhotosBeforeRegister(Request $request) {
         $photo = $request->file('file');
         $photoName = $photo->getClientOriginalName();
-        $path = $request->file('file')->storeAs('uploads/photos', $photoName, 'public');
+        $path = $request->file('file')->storeAs('uploads/photosr', $photoName, 'public');
 
-        $photo_id = DB::table('photos')
-            ->insertGetId([
-                'user_id' => Auth::user()->id,
-                'path' => 'storage/' . $path
-            ]);
+        // $photo_id = DB::table('photos')
+        //     ->insertGetId([
+        //         'user_id' => Auth::user()->id,
+        //         'path' => 'storage/' . $path
+        //     ]);
 
         $data = [
             'status' => 'success',
-            'message' => 'Uploaded Successfully!',
+            'message' => 'storage/' . $path,
         ];
         
         echo json_encode($data);

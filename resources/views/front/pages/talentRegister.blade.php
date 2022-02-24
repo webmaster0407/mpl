@@ -155,6 +155,7 @@
                         </div>
                     </div>
                 </div>
+                <input type="hidden" name="hidden_images" id="hidden_images">
                 <div class="alert alert-danger photos_error" style="display: none;">{{ __('Photos is required')}}!</div>
                 
                 <label for="job_reference">{{ __('Job Reference')}}:</label>

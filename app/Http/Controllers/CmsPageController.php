@@ -25,12 +25,23 @@ class CmsPageController extends Controller
             return redirect(route('base_url'));
         }
 
+        $locale = "en";
+        if (Session::has('locale')) {
+            $locale = session('locale'); 
+        }
+        
+        $prefix = "en";
+        if ($locale === "zh-cn") $prefix = "cn";
+        if ($locale === "zh-hk") $prefix = "hk";
+
         $cmsPage = Cms::where('slug', '=', $slug)->where('is_active', '=', 'yes')->first();
         if ($cmsPage === null) 
             abort(404);
+
         return view('front.pages.cmspage',
             compact(
-                'cmsPage'
+                'cmsPage',
+                'prefix'
             )
         );
 

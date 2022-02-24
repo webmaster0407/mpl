@@ -511,6 +511,9 @@ var AuthEventsHandlers = function() {
                 return (fileRef = file.previewElement) != null ?
                     fileRef.parentNode.removeChild(file.previewElement) : void 0;
             },
+            success: function(data) {
+                alert(data);
+            }
         });
     };
 

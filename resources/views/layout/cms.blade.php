@@ -13,12 +13,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/front/js/sweetalert/sweetalert.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/front/css/cms.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/front/css/styles.css')}}">
     <title> @if(isset($cmsPage->page_title) ) {{ __($cmsPage->page_title) }} @else {{__('MPL - Marketing and Production Limited')}} @endif</title>
     </head>
 <body>
 <header>
 </header>
+@include('front.inc.app_header')
     @yield('content')
+@include('front.inc.app_footer')
 <footer>
 </footer>
 
