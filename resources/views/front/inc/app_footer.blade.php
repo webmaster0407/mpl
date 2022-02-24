@@ -16,8 +16,6 @@
 @endif
 @if(isset($page_sub_title) && ($page_sub_title == 'Profile'))
 <script type="text/javascript" src="{{ asset('assets/front/js/profile.js') }}"></script>
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.2/min/dropzone.min.js"></script> -->
-<!-- <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script> -->
 <script src="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone-min.js"></script>
 <script type="text/javascript">
     Dropzone.autoDiscover = false;

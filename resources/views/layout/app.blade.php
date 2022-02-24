@@ -14,11 +14,8 @@
     <link rel="stylesheet" href="{{ asset('assets/front/js/sweetalert/sweetalert.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/front/css/styles.css')}}">
     @if(isset($page_sub_title) && ($page_sub_title == 'Profile'))
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.2/basic.min.css"/> -->
-    <!-- <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" /> -->
     <link href="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone.css" rel="stylesheet" type="text/css" />
     @endif
-    
     <title> @if(isset($page_title) ) {{ __($page_title) }} @else {{__('MPL - Marketing and Production Limited')}} @endif</title>
     </head>
 <body>
