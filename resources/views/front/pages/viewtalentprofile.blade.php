@@ -21,6 +21,7 @@
 			<h4>{{ $userdata->shoes }}</h4>
 			<h4>{{ $userdata->job_reference }}</h4>
 			<hr />
+			@endif
 
 	<div id="talent_profile_view">
 
