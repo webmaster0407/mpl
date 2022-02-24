@@ -6,24 +6,8 @@
 <section id="section-talentcategories">
 
 	<div class="container">
-		<div id="talent_profile_view">
-			<h1>{{ Auth::user()->name }}</h1>
-			<h2>{{ Auth::user()->email }}</h2>
-			@if(isset($userdata))
-			<h1> {{ $userdata->category }} </h1>
-			<h4>{{ $userdata->phone }}</h4>
-			<h4>{{ $userdata->birthday_year }}</h4>
-			<h4>{{ $userdata->gender }}</h4>
-			<h4>{{ $userdata->height }}</h4>
-			<h4>{{ $userdata->weight }}</h4>
-			<h4>{{ $userdata->chest }}</h4>
-			<h4>{{ $userdata->hips }}</h4>
-			<h4>{{ $userdata->shoes }}</h4>
-			<h4>{{ $userdata->job_reference }}</h4>
-			<hr />
-			@endif
 
-	<div id="talent_profile_view">
+		<div id="talent_profile_view">
 
 		<h1>{{ Auth::user()->name }}</h1>
 		<h2>{{ Auth::user()->email }}</h2>
@@ -49,7 +33,6 @@
 				@endforeach
 			@else
 				<h5>{{ __('No photos uploaded')}}.</h5>
->>>>>>> 132911f (category-fix)
 			@endif
 			<div class="talent_profile_view_photos">
 				@if($photos !== null && (count($photos) > 0) )
@@ -67,6 +50,7 @@
 			</div>
 		</div>
 	</div>
+
 </section>
 <script type="text/javascript">
 	var EDIT_PROFILE_URL = "{{ route('editProfile') }}";
