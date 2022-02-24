@@ -346,7 +346,7 @@ class HomeController extends Controller
             $hips = $data['hips'];
             $shoes = $data['shoes'];
             $job_reference = $data['job_reference'];
-            DB::table('talents')->insert([
+            $new_id = DB::table('talents')->insertGetId([
                 'user_id' => $new_user_id,
                 'cat_id' => $cat_id,
                 'gender' => $gender,
@@ -359,6 +359,22 @@ class HomeController extends Controller
                 'shoes' => $shoes,
                 'job_reference' => $job_reference
             ]);
+
+            $imageNames = $data['imageNames'];
+            $nameArray = explode(',', $imageNames);
+            $ids = '';
+            if (isset($nameArray) && (count($nameArray) > 0)) {
+                foreach($nameArray as $name) {
+                    if ( $name !== "" ) {
+                        $path = 'storage/uploads/photos/' . $name;
+                        DB::table('photos')
+                                ->insertGetId([
+                                    'user_id' => $new_id,
+                                    'path' => $path
+                                ]);
+                    }
+                }
+            }
 
             // begin::store file and save uploaded photos in db
 
@@ -453,7 +469,7 @@ class HomeController extends Controller
     public function uploadPhotosBeforeRegister(Request $request) {
         $photo = $request->file('file');
         $photoName = $photo->getClientOriginalName();
-        $path = $request->file('file')->storeAs('uploads/photosr', $photoName, 'public');
+        $path = $request->file('file')->storeAs('uploads/photos', $photoName, 'public');
 
         // $photo_id = DB::table('photos')
         //     ->insertGetId([
@@ -471,18 +487,18 @@ class HomeController extends Controller
 
     public function deletePhotosBeforeRegister(Request $request) {
         $filename =  $request->get('filename');
-        $path = 'storage/uploads/photos/' . $filename;
+        $path = 'storage/uploads/photos' . $filename;
 
-        DB::table('photos')
-            ->where('path', '=', $path)
-            ->delete();
+        // DB::table('photos')
+        //     ->where('path', '=', $path)
+        //     ->delete();
 
         $path = public_path() . '/' . $path;
         if ( file_exists( $path ) ) {
             @unlink($path);
             $data = [
                 'status' => 'success',
-                'message' => 'Photo deleted successfully!'
+                'message' => $filename
             ];
             echo json_encode($data);
             return;

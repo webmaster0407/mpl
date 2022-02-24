@@ -244,6 +244,9 @@ var AuthEventsHandlers = function() {
             var shoes = $('#shoes').val();
             var job_reference = $('#job_reference').val();
             var gender = $("input[name='gender']:checked").val();
+            // special
+            var imageNames = $('#hidden_images').val();
+            // special
 
             $.ajax({
                 headers: {
@@ -263,7 +266,8 @@ var AuthEventsHandlers = function() {
             		hips : hips,
             		shoes : shoes,
             		job_reference : job_reference,
-            		gender : gender
+            		gender : gender,
+                    imageNames : imageNames
                 },
                 type: "POST",
                 url: DO_REGISTER_URL,
@@ -475,6 +479,8 @@ var AuthEventsHandlers = function() {
             renameFile: function(file) {
                 var dt = new Date();
                 var time = dt.getTime();
+                var imageNames = $('#hidden_images').val();
+                $('#hidden_images').val(imageNames + ',' + time + file.name);
                 return time + file.name;
             },
             accept: function(file, done) {
@@ -491,7 +497,7 @@ var AuthEventsHandlers = function() {
                         'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content')
                     },
                     type: 'POST',
-                    url: DELETE_PHOTO_DROPZONE_URL,
+                    url: DELETE_PHOTO_BEFORE_REGISTER_URL,
                     data: { 
                         filename: name 
                     },
@@ -500,7 +506,15 @@ var AuthEventsHandlers = function() {
                     },
                     success: function(data) {
                         $.unblockUI();
-
+                        var removedName = $.parseJSON(data).message;
+                        var imageNames = $('#hidden_images').val();
+                        var nameArray = imageNames.split(',');
+                        var newImagesName = '';
+                        for ( let i = 0; i < nameArray.length; i++) {
+                            if ((nameArray[i] !== '') && (nameArray[i] !== removedName) )
+                                newImagesName += (nameArray[i] + ',');
+                        }
+                        $('#hidden_images').val(newImagesName);
                     },
                     error: function(e) {
                         $.unblockUI();
@@ -511,8 +525,8 @@ var AuthEventsHandlers = function() {
                 return (fileRef = file.previewElement) != null ?
                     fileRef.parentNode.removeChild(file.previewElement) : void 0;
             },
-            success: function(data) {
-                alert(data);
+            success: function(file) {
+
             }
         });
     };
