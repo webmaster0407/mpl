@@ -24,8 +24,33 @@ class HomeController extends Controller
             );
     }
 
-    public function index() {        
-        return view('admin.home');
+    public function index() {     
+        $total_users = DB::table('users')->get()->count() - 1;
+        $total_talents = DB::table('talents')->get()->count();
+        $total_talents_allowed = DB::table('talents')->where('permission', '=', 'yes')->get()->count();
+        $total_clients = DB::table('clients')->get()->count();
+        $total_clients_allowed = DB::table('clients')->where('permission', '=', 'yes')->get()->count();
+
+        $category_avg = DB::table('talents')
+            ->leftJoin('categories', 'talents.cat_id', '=', 'categories.id')
+            ->select( 
+                'categories.name as category',
+                DB::raw('COUNT(talents.id) as cnt')
+            )
+            ->groupBy('categories.id')
+            ->orderBy('categories.id')
+            ->get();
+
+        return view('admin.home',
+            compact(
+                'total_users',
+                'total_talents',
+                'total_clients',
+                'category_avg',
+                'total_talents_allowed',
+                'total_clients_allowed'
+            )
+        );
     }
 
     public function login() {

@@ -45,7 +45,7 @@
 		<div class="view_talents_section" style="display: none;">
 			
 			<div class="view_talents_button_group">
-				<button class="return_talents_btn btn btn-success">Go Back</button>
+				<button class="return_talents_btn btn btn-success">{{ __('Go Back')}}</button>
 			</div>
 		</div>
 		<!--begin:: Edit form-->
@@ -54,60 +54,60 @@
 		<div class="edit_talents_section row" style="display: none;">
 			<input type="hidden" name="talents_hidden_id" id="talents_hidden_id">
 			<div class="form-group col-md-4">
-				<label for="name">Name <span class="text-danger">*</span></label>
+				<label for="name">{{ __('Name')}} <span class="text-danger">*</span></label>
 				<input type="text" class="form-control" name="name" id="name" >
-				<div class="alert alert-danger name_error" style="display: none;">The Field is required!</div>
+				<div class="alert alert-danger name_error" style="display: none;">{{ __('The Field is required')}}!</div>
 			</div>
 			<div class="form-group col-md-6">
-				<label for="email">Email <span class="text-danger">*</span></label>
+				<label for="email">{{ __('Email')}} <span class="text-danger">*</span></label>
 				<input type="text" class="form-control" name="email" id="email" >
-				<div class="alert alert-danger email_error" style="display: none;">The Field is required!</div>
+				<div class="alert alert-danger email_error" style="display: none;">{{ __('The Field is required')}}!</div>
 			</div>
 			<div class="form-group col-md-2">
-				<label for="gender">Gender <span class="text-danger">*</span></label>
+				<label for="gender">{{ __('Gender')}} <span class="text-danger">*</span></label>
 				<select name="gender" class="form-control" id="gender">
-					<option value="male">Male</option>
-					<option value="female">Female</option>
+					<option value="male">{{ __('Male')}}</option>
+					<option value="female">{{ __('Female')}}</option>
 				</select>
-				<div class="alert alert-danger gender_error" style="display: none;">The Field is required!</div>
+				<div class="alert alert-danger gender_error" style="display: none;">{{ __('The Field is required')}}!</div>
 			</div>
 			<div class="form-group col-md-3">
-				<label for="phone">Phone <span class="text-danger">*</span></label>
+				<label for="phone">{{ __('Phone')}} <span class="text-danger">*</span></label>
 				<input type="text" class="form-control" name="phone" id="phone" >
-				<div class="alert alert-danger phone_error" style="display: none;">The Field is required!</div>
+				<div class="alert alert-danger phone_error" style="display: none;">{{ __('The Field is required')}}!</div>
 			</div>
 			<div class="form-group col-md-3">
-				<label for="birthday_year">Birth Year <span class="text-danger">*</span></label>
+				<label for="birthday_year">{{ __('Birth Year')}} <span class="text-danger">*</span></label>
 				<input type="number" class="form-control" name="birthday_year" id="birthday_year" >
-				<div class="alert alert-danger birthday_year_error" style="display: none;">The Field is required!</div>
+				<div class="alert alert-danger birthday_year_error" style="display: none;">{{ __('The Field is required')}}!</div>
 			</div>
 			<div class="form-group col-md-2">
-				<label for="height">Height <span class="text-danger">*</span></label>
+				<label for="height">{{ __('Height')}} <span class="text-danger">*</span></label>
 				<input type="number" class="form-control" name="height" id="height" >
-				<div class="alert alert-danger height_error" style="display: none;">The Field is required!</div>
+				<div class="alert alert-danger height_error" style="display: none;">{{ __('The Field is required')}}!</div>
 			</div>
 			<div class="form-group col-md-2">
-				<label for="weight">Weight <span class="text-danger">*</span></label>
+				<label for="weight">{{ __('Weight')}} <span class="text-danger">*</span></label>
 				<input type="number" class="form-control" name="weight" id="weight" >
-				<div class="alert alert-danger weight_error" style="display: none;">The Field is required!</div>
+				<div class="alert alert-danger weight_error" style="display: none;">{{ __('The Field is required')}}!</div>
 			</div>
 			<div class="form-group col-md-2">
-				<label for="chest">Chest <span class="text-danger">*</span></label>
+				<label for="chest">{{ __('Chest')}} <span class="text-danger">*</span></label>
 				<input type="number" class="form-control" name="chest" id="chest" >
-				<div class="alert alert-danger chest_error" style="display: none;">The Field is required!</div>
+				<div class="alert alert-danger chest_error" style="display: none;">{{ __('The Field is required')}}!</div>
 			</div>
 			<div class="form-group col-md-2">
-				<label for="hips">Hips <span class="text-danger">*</span></label>
+				<label for="hips">{{ __('Hips')}} <span class="text-danger">*</span></label>
 				<input type="number" class="form-control" name="hips" id="hips" >
-				<div class="alert alert-danger hips_error" style="display: none;">The Field is required!</div>
+				<div class="alert alert-danger hips_error" style="display: none;">{{ __('The Field is required')}}!</div>
 			</div>
 			<div class="form-group col-md-2">
-				<label for="shoes">Shoes <span class="text-danger">*</span></label>
+				<label for="shoes">{{ __('Shoes')}} <span class="text-danger">*</span></label>
 				<input type="number" class="form-control" name="shoes" id="shoes" >
-				<div class="alert alert-danger shoes_error" style="display: none;">The Field is required!</div>
+				<div class="alert alert-danger shoes_error" style="display: none;">{{ __('The Field is required')}}!</div>
 			</div>
 			<div class="form-group col-md-8">
-				<label for="category">Category <span class="text-danger">*</span></label>
+				<label for="category">{{ __('Category')}} <span class="text-danger">*</span></label>
 				<select class="form-control" name="category" id="category">
 					@if ( isset($categories) && (count($categories) > 0 ) )
 						@foreach ($categories as $category)
@@ -115,22 +115,22 @@
 						@endforeach
 					@endif
 				</select>
-				<div class="alert alert-danger category_error" style="display: none;">The Field is required!</div>
+				<div class="alert alert-danger category_error" style="display: none;">{{ __('The Field is required')}}!</div>
 			</div>
 			<div class="form-group col-md-12">
-				<label for="job_reference">Job Reference <span class="text-danger">*</span></label>
+				<label for="job_reference">{{ __('Job Reference')}} <span class="text-danger">*</span></label>
 				<div class="summernote" id="job_description"></div>
-				<div class="alert alert-danger job_description_error" style="display: none;">The Field is required!</div>
+				<div class="alert alert-danger job_description_error" style="display: none;">{{ __('The Field is required')}}!</div>
 			</div>
 			<div class="form-group col-md-12">
-				<label>Uploaded Photos</label>
+				<label>{{ __('Uploaded Photos')}}</label>
 				<div class="row talent_uploaded_photos">
 					<!-- Uploaded photos will be here -->
 				</div>
 			</div>
 			<div class="edit_talents_button_group col-md-12">
-				<button class="save_talents_btn btn btn-success">Save</button>
-				<button class="cancel_talents_btn btn btn-warning">Cancel</button>
+				<button class="save_talents_btn btn btn-success">{{ __('Save')}}</button>
+				<button class="cancel_talents_btn btn btn-warning">{{ __('Cancel')}}</button>
 			</div>
 		</div>
 		<!--begin:: Edit form-->

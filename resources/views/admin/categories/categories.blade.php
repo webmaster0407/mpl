@@ -46,19 +46,19 @@
 				<!--begin: Add/Edit Category-->
 				<input type="hidden" name="cat_hidden" id="cat_hidden">
 				<div class="form-group">
-					<label for="cat_name">Name <span class="text-danger">*</span></label>
+					<label for="cat_name">{{ __('Name')}} <span class="text-danger">*</span></label>
 					<input type="text" name="cat_name" id="cat_name" class="form-control" placeholder="...">
 					<div class="alert alert-danger cat_name_error" style="display: none;"></div>
 				</div>
 				<div class="form-group">
-					<label for="cat_name">Description</label>
+					<label for="cat_name">{{ __('Description')}}</label>
 					<textarea name="cat_description" id="cat_description" class="form-control" rows="10"></textarea>
 				</div>
 				<div class="category_form_btns">
-					<button class="btn btn-primary cat_add_btn">Add Category</button>
-					<button class="btn btn-warning cat_reset_btn">Reset</button>
-					<button class="btn btn-success cat_save_btn">Save Changes</button>
-					<button class="btn btn-warning cat_cancel_btn">Cancel</button>	
+					<button class="btn btn-primary cat_add_btn">{{ __('Add Category')}}</button>
+					<button class="btn btn-warning cat_reset_btn">{{ __('Reset')}}</button>
+					<button class="btn btn-success cat_save_btn">{{ __('Save Changes')}}</button>
+					<button class="btn btn-warning cat_cancel_btn">{{ __('Cancel')}}</button>	
 				</div>
 				
 				<!--end: Add/Edit Category-->
