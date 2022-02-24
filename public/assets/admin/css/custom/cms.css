@@ -1,0 +1,13 @@
+.add_edit_btn_group {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.add_edit_btn_group button {
+	margin-left: 20px;
+}
+
+#add_edit_cms_section .alert {
+	margin-top: 5px;
+	opacity: 0.7;
+}

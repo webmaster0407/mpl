@@ -1,0 +1,61 @@
+	/* *********  start banners  **********  */
+	.images_wrapper > div > img {
+		width:  100%;
+		height: auto;
+		border-radius: 30px;
+		padding: 10px;
+	}
+
+	.images_wrapper > div {
+		position: relative;
+	}
+
+	.images_wrapper > div > div {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 110px;
+		height: 35px;
+		display: flex;
+		justify-content: space-between;
+		transform: translate(-50%, -50%);
+	}
+
+	.images_wrapper h1 {
+		padding: 70px 0;
+		margin-left: 15px;
+		margin-right: 15px;
+		width: 100%;
+		text-align: center;
+		border: 2px solid #eee;
+		border-radius: 30px;
+	}
+
+	#current_banner img {
+		width: 100%;
+		height: 200px;
+		border-radius: 30px;
+	}
+
+	#current_banner h1 {
+		padding-top: 70px;
+		padding-bottom: 70px;
+		text-align: center;
+		border:  2px solid #eee;
+		border-radius: 30px;
+	}
+
+	#category, 
+	#banner_category {
+		background-color: #1E1E2D;
+		text-align: center;
+		color: #fff;
+		font-size: 16px;
+		font-weight: 500;
+		border-radius: 15px;
+	}
+
+	.card-custom .card-header > h1 {
+		padding: 20px 0;
+	}
+	/* ********* end banners  **********  */
