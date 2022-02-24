@@ -84,11 +84,9 @@ Route::post('deletePhotoUploadedJustByDropzone', ['as' => 'deletePhotoUploadedJu
 // Route::get('test', ['as' => 'test',    'uses' => 'App\Http\Controllers\TestController@index']);
 
 
-Route::get('/{slug}', 'App\Http\Controllers\CmsPageController@displayCmsPages');
-
 /*
 |--------------------------------------------------------------------------
-| end::front panel
+| end::front panel ( cms page route is in last )
 |--------------------------------------------------------------------------
 */
 
@@ -212,5 +210,18 @@ Route::get('/clear-cache', function () {
 /*
 |--------------------------------------------------------------------------
 | end::initial setup
+|--------------------------------------------------------------------------
+*/
+
+
+/*
+|--------------------------------------------------------------------------
+| begin::cms pages
+|--------------------------------------------------------------------------
+*/
+Route::get('/{slug}', 'App\Http\Controllers\CmsPageController@displayCmsPages');
+/*
+|--------------------------------------------------------------------------
+| end::cms pages
 |--------------------------------------------------------------------------
 */
