@@ -66,8 +66,10 @@ class ProfileController extends Controller
             $view_blade = 'front.pages.viewtalentprofile';
             $userdata = DB::table('talents')
                 ->leftJoin('users', 'talents.user_id', '=', 'users.id')
+                ->leftJoin('categories', 'categories.id', '=', 'talents.cat_id')
                 ->select(
-                    'talents.*'
+                    'talents.*',
+                    'categories.name as category'
                 )
                 ->where('users.id', '=', $id)
                 ->first();
