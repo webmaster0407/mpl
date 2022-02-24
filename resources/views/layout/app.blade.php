@@ -17,6 +17,10 @@
     @endif
     <link rel="stylesheet" href="{{ asset('assets/front/css/styles.css')}}">
     <title> @if(isset($page_title) ) {{ __($page_title) }} @else {{__('MPL - Marketing and Production Limited')}} @endif</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/front/images/favicon//apple-touch-icon.png')}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/front/images/favicon//favicon-32x32.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/front/images/favicon//favicon-16x16.png')}}">
+    <link rel="manifest" href="{{ asset('assets/front/images/favicon//site.webmanifest')}}">
     </head>
 <body>
 @include('front.inc.app_header')
