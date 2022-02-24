@@ -7,7 +7,11 @@
                 <li class="dropdown">
                     <a href="javascript:void(0)">{{ __('My Account')}}<i class="icon-arrowdown"></i></a>
                     <ul>
-                        <li><a href="{{ route('editTalentprofile') }}">{{ __('Edit Profile')}}</a></li>
+                        @if(Auth::user()->role == 'talent')
+                            <li><a href="{{ route('editTalentprofile') }}">{{ __('Edit Profile')}}</a></li>
+                        @elseif(Auth::user()->role == 'client')
+                            <li><a href="{{ route('profile') }}">{{ __('Edit Profile')}}</a></li>
+                        @endif
                         <li><a href="{{ route('changePassword') }}">{{ __('Change Password')}}</a></li>
                     </ul>
                 </li>

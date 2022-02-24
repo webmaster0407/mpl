@@ -15,19 +15,7 @@
 	}
 </style>
 <section id="section-talentcategories">
-	<div id="client_profile_info">
-		<div class="client_profile_info_wrapper">
-			<h1> {{ Auth::user()->name }}</h1>
-			<h2> {{ Auth::user()->email }}</h2>
-			<h4> {{ $userdata->telephone }} </h4>
-			<h4> {{ $userdata->company }} </h4>
-			<div>
-				<button id="edit_client_profile_form_btn">{{ __('Edit Profile')}}</button>
-			</div>
-		</div>
-
-	</div>
-	<div id="edit_client_profile_form" style="display: none;">
+	<div id="edit_client_profile_form">
 		<form id="clientsignup-form">
             <div class="row">
                 <div class="col-xs-6">
@@ -62,7 +50,6 @@
                 </div>
             </div>
             <div class="actions">
-            	<a href="#" id="back_to_view_profile_btn" class="btn btn-default">{{ __('Back')}}</a>
                 <a href="#" id="edit_client_profile_form_submit_btn" class="btn btn-secondary">{{ __('Submit')}}</a>
             </div>
 		</form>

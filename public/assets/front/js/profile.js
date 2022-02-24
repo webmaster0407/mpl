@@ -1,17 +1,5 @@
 var editProfileEventHandlers = function() {
 
-	var viewClientEditProfileFormChagneHandler = function() {
-		$('#edit_client_profile_form_btn').on('click', function() {
-			$('#client_profile_info').hide();
-			$('#edit_client_profile_form').show();
-		});
-
-		$('#back_to_view_profile_btn').on('click', function() {
-			$('#edit_client_profile_form').hide();
-			$('#client_profile_info').show();
-		});
-	};
-
 	var submitClientEditFormHandler = function() {
 		$('#edit_client_profile_form_submit_btn').on('click', function(e) {
 			e.preventDefault();
@@ -446,7 +434,6 @@ var editProfileEventHandlers = function() {
 
 	return {
 		init: function() {
-			viewClientEditProfileFormChagneHandler();
 			submitClientEditFormHandler();
 			submitTalentEditFormHandler();
 			talentImageUploadHandler();
