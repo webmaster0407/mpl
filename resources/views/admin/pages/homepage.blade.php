@@ -17,14 +17,14 @@
 			<!--begin::Card-->
 			<div class="card card-custom gutter-b example example-compact">
 				<div class="card-header">
-					<h3 class="card-title">{{ __('Section')}} 1</h3>
+					<h3 class="card-title">{{ __('Welcome Section')}} </h3>
 
 				</div>
 				<!--begin::Form-->
 				<form id="section1">
 					<div class="card-body">
 						<div class="form-group">
-							<label  for="section1_language">Language
+							<label  for="section1_language">{{ __('Language')}}
 							<span class="text-danger">*</span></label>	
 							<select class="form-control" id="section1_language" name="section1_language">
 								<option value="en">{{__('English')}}</option>
@@ -85,14 +85,14 @@
 			<!--begin::Card-->
 			<div class="card card-custom gutter-b example example-compact">
 				<div class="card-header">
-					<h3 class="card-title">{{ __('Section')}}  2 </h3>
+					<h3 class="card-title">{{ __('Visual Service Section')}} </h3>
 
 				</div>
 				<!--begin::Form-->
 				<form id="section2">
 					<div class="card-body">
 						<div class="form-group">
-							<label for="section2_language">Language
+							<label for="section2_language">{{ __('Language')}}
 							<span class="text-danger">*</span></label>
 							<select class="form-control" id="section2_language" name="section2_language">
 								<option value="en">{{__('English')}}</option>
@@ -153,14 +153,14 @@
 			<!--begin::Card-->
 			<div class="card card-custom gutter-b example example-compact">
 				<div class="card-header">
-					<h3 class="card-title">{{ __('Section')}} 3 </h3>
+					<h3 class="card-title">{{ __('Talent Service Section')}} </h3>
 
 				</div>
 				<!--begin::Form-->
 				<form id="section3">
 					<div class="card-body">
 						<div class="form-group">
-							<label for="section3_language">Language
+							<label for="section3_language">{{ __('Language')}}
 							<span class="text-danger">*</span></label>
 							<select class="form-control" id="section3_language" name="section3_language">
 								<option value="en">{{__('English')}}</option>
@@ -221,14 +221,14 @@
 			<!--begin::Card-->
 			<div class="card card-custom gutter-b example example-compact">
 				<div class="card-header">
-					<h3 class="card-title">{{ __('Section')}} 4 </h3>
+					<h3 class="card-title">{{ __('Copywriting section')}} </h3>
 
 				</div>
 				<!--begin::Form-->
 				<form id="section4">
 					<div class="card-body">
 						<div class="form-group">
-							<label for="section4_language">Language
+							<label for="section4_language">{{ __('Language')}}
 							<span class="text-danger">*</span></label>
 							<select class="form-control" id="section4_language" name="section4_language">
 								<option value="en">{{__('English')}}</option>
