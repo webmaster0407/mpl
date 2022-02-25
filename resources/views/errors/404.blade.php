@@ -35,7 +35,7 @@
 </header>
 
 <section id="section-talentcategories" class="text-center d-flex flex-column justify-content-center">
-    <h1 style="font-size: 100px;">404</h1>
+    <h1 class="section-title mb-50">{{ __('Oops, page not found') }}</h1>
     @if( (Auth::user() !== null) && (Auth::user()->role =='admin') )
     <div><a href="{{ route('admin.home') }}" class="btn btn-secondary" style="width: 200px;">{{ __('Back To Home')}}</a></div>
     @else

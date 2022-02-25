@@ -139,5 +139,8 @@
 	"Go Back" : "回去",
 	"Birth Year" : "出生年",
 	"Category" : "类别",
-	"Uploaded Photos" : "上传的照片"
+	"Uploaded Photos" : "上传的照片",
+
+	"Back To Home": "返回首页",
+	"Oops, page not found": "糟糕，找不到页面"
 }
