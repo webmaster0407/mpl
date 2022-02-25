@@ -37,9 +37,9 @@
 <section id="section-talentcategories" class="text-center d-flex flex-column justify-content-center">
     <h1 style="font-size: 100px;">404</h1>
     @if( (Auth::user() !== null) && (Auth::user()->role =='admin') )
-    <div><a href="{{ route('base_url') }}" class="btn btn-secondary" style="width: 200px;">{{ __('Back To Home')}}</a></div>
-    @else
     <div><a href="{{ route('admin.home') }}" class="btn btn-secondary" style="width: 200px;">{{ __('Back To Home')}}</a></div>
+    @else
+    <div><a href="{{ route('base_url') }}" class="btn btn-secondary" style="width: 200px;">{{ __('Back To Home')}}</a></div>
     @endif
     
 </section>
