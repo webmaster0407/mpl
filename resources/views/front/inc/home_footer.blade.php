@@ -6,7 +6,7 @@
             <div class="col-sm-4">
                 <div class="footer-logo">
                     <a href="/"><img src="{{ asset('assets/front/images/footer-logo.png')}}" title="Footer Logo" /></a>
-                    <p>{{ __('MPL has state of the art production handling small to large format of events, activities and exhibitions Hong Kong wide with an unrivalled name in the industry for excellence, reliability and innovation.')}}</p>
+                    <p>{{ __('Footer Text') }}</p>
                 </div>
             </div>
             <div class="col-sm-1">
@@ -25,6 +25,6 @@
         </div>
     </div>
     <div class="container">
-        <p class="copyright">©Copyright <strong>MPL</strong>. {{ __('All rights reserved')}}</p>
+    <p class="copyright">©{{ __('Copyright') }} <strong>MPL</strong>&nbsp;&nbsp; {{ __('All rights reserved')}}.</p>
     </div>
 </footer>

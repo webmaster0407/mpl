@@ -29,7 +29,7 @@
             </div>
             <div class="social-logins">
                 <div class="social-logins-desc">
-                    <p>{{ __("Don't have account")}}? <a href="{{ route('register') }}">{{ __('Signup here')}}</a></p>
+                    <p>{{ __("Don't have account") }}? <a href="{{ route('register') }}">{{ __('Signup here')}}</a></p>
                     <label><span class="separator"></span><span>{{ __('Or Login with')}}</span><span class="separator"></span></label>
                 </div>
                 <ul>

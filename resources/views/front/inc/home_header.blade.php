@@ -16,7 +16,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="{{ route('logout') }}" class="logout-link">Logout<i class="icon-logout"></i></a>
+                    <a href="{{ route('logout') }}" class="logout-link">{{ __('Logout') }}<i class="icon-logout"></i></a>
                 </li>
                 @else
                 <li><a href="{{ route('login') }}">{{ __('Login')}}</a></li>

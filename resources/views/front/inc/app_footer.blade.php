@@ -1,6 +1,6 @@
 <footer class="footer-talent">
     <div class="container">
-        <p class="copyright">©Copyright <strong>MPL</strong>. {{ __('All rights reserved')}}</p>
+        <p class="copyright">©{{ __('Copyright') }} <strong>MPL</strong>&nbsp;&nbsp; {{ __('All rights reserved')}}.</p>
     </div>
 </footer>
 <script

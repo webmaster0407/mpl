@@ -44,7 +44,7 @@
 							<!--begin:Aside Content-->
 							<div class="text-dark-75">
 								<h3 class="mb-8 mt-22 font-weight-bold">{{ __('JOIN TO ADMIN PANEL')}}</h3>
-								<p class="mb-15 text-muted font-weight-bold">{{ __('MPL has state of the art production handling small to large format of events, activities and exhibitions Hong Kong wide with an unrivalled name in the industry for excellence, reliability and innovation.')}}</p>
+								<p class="mb-15 text-muted font-weight-bold">{{ __('footer_text')}}</p>
 						<!-- 		<button type="button" id="kt_login_signup" class="btn btn-outline-primary btn-pill py-4 px-9 font-weight-bold">Get An Account</button> -->
 							</div>
 							<!--end:Aside Content-->
