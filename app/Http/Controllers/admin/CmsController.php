@@ -45,6 +45,7 @@ class CmsController extends Controller
                 ->orWhere('is_menu', 'LIKE', $search_key)
                 ->orWhere('is_header', 'LIKE', $search_key)
                 ->orWhere('is_footer', 'LIKE', $search_key)
+                ->groupBy('slug')
                 ->orderBy($sort_field, $sort_key)
                 ->select(
                     'cms.id',
@@ -134,6 +135,38 @@ class CmsController extends Controller
         echo json_encode($data);
     }
 
+    public function getCmsDetailByLanguage(Request $request) {
+        $data = $request->all();
+        $id = $data['id'];
+        $lang = $data['lang'];
+
+        $slug = DB::table('cms')->where('id', '=', $id)->first()->slug;
+        $cms = DB::table('cms')->where('slug', '=', $slug)->where('lang', '=', $lang)->first();
+
+        if ($cms === null) {
+            $new_id = DB::table('cms')
+                    ->insertGetId([
+                        'slug'              => $slug,
+                        'lang'              => $lang,
+                        'page_title'        => '',
+                        'meta_title'        => '',
+                        'meta_keyword'      => '',
+                        'meta_description'  => '',
+                        'page_sub_title'    => '',
+                        'page_sub_group'    => '',
+                        'short_desc'        => '',
+                        'description'       => ''
+                    ]);
+            $cms = DB::table('cms')->where('slug', '=', $slug)->where('lang', '=', $lang)->first();
+        }
+
+        $data = [
+            'status' => 'success',
+            'data' => $cms
+        ];
+        echo json_encode($data);
+    }
+ 
     public function getCmsDetail(Request $request) {
         $request_data = $request->only('id');
         $id = $request_data['id'];
@@ -156,17 +189,23 @@ class CmsController extends Controller
         echo json_encode($data);
     }
 
-    public function ifCmsAlreadyExist($slug) {
+    public function ifCmsAlreadyExist($slug, $lang) {
         $cms = DB::table('cms')
                     ->where('slug', '=', $slug)
+                    ->where('lang', '=', $lang)
                     ->first();
         if ($cms === null) return true;
         else return false;
     }
 
+    public function php_slug($string) {
+         $slug = preg_replace('/[^a-z0-9-]+/', '', trim(strtolower($string)));
+         return $slug;
+    }    
+
     public function addNewCmsPage(Request $request) {
         $data = $request->all();
-        if ($this->ifCmsAlreadyExist($data['slug']) === false) { // category already exist
+        if ($this->ifCmsAlreadyExist( $this->php_slug($data['slug']), $data['lang']) === false) { // category already exist
             $data = [
                 'status' => 'failed',
                 'message' => 'Slug already exists!'
@@ -176,7 +215,8 @@ class CmsController extends Controller
         }
         DB::table('cms')
             ->insert([
-                    'slug'              => $data['slug'],
+                    'slug'              => $this->php_slug($data['slug']),
+                    'lang'              => $data['lang'],
                     'page_title'        => $data['page_tite'],
                     'meta_title'        => $data['meta_title'],
                     'meta_keyword'      => $data['meta_keyword'],
@@ -197,12 +237,36 @@ class CmsController extends Controller
         echo json_encode($data);
     }
 
+    public function ifNewSlugAlreadyExistWhenUpdate($id, $slug, $lang) {
+        $cms = DB::table('cms')
+                    ->where('slug', '=', $slug)
+                    ->where('lang', '=', $lang)
+                    ->get();
+        if ($cms === null) return true;
+        $rlt = true;
+        foreach($cms as $c) {
+            if ($c->id != $id) {
+                $rlt = false; 
+                return $rlt;
+            }
+        }
+    }
+
     public function updateCmsPage(Request $request) {
         $data = $request->all();
+        if ($this->ifNewSlugAlreadyExistWhenUpdate( $data['id'], $this->php_slug($data['slug']), $data['lang']) === false) { // category already exist
+            $data = [
+                'status' => 'failed',
+                'message' => 'Slug already exists!'
+            ];
+            echo json_encode($data);
+            return;
+        }
+
         DB::table('cms')
             ->where('id', '=', $data['id'])
             ->update([
-                    'slug'              => $data['slug'],
+                    'slug'              => $this->php_slug($data['slug']),
                     'page_title'        => $data['page_tite'],
                     'meta_title'        => $data['meta_title'],
                     'meta_keyword'      => $data['meta_keyword'],
@@ -225,8 +289,8 @@ class CmsController extends Controller
 
     public function deleteCmsPage(Request $request) {
         $data = $request->only('id');
-        Db::table('cms')->where('id', '=', $data['id'])->delete();
-
+        $slug = DB::table('cms')->where('id', '=', $data['id'])->first()->slug;
+        DB::table('cms')->where('slug', '=', $slug)->delete();
         $data = [
             'status' => 'success',
             'message' => 'Deleted successfully!'

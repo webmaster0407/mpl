@@ -39,17 +39,31 @@
 		<div id="add_edit_cms_section" style="display: none;">
 			<input type="hidden" name="cms_hidden_id" id="cms_hidden_id">
 			<div class="row">
-				<div class="form-group col-md-4">
+				<div class="form-group col-md-3">
 					<label for="slug">{{ __('Slug')}} <span class="text-danger">*</span></label>
 					<input type="text" class="form-control" name="slug" id="slug" placeholder="slug...">
 					<div class="alert alert-danger slug_error" style="display: none;">{{ __('The field is required')}}!</div>
 				</div>
-				<div class="form-group col-md-4">
+				<?php 
+			        $locale = "en";
+			        if (Session::has('locale')) {
+			            $locale = session('locale'); 
+			        }
+			    ?>
+				<div class="form-group col-md-3">
+					<label for="lang">{{ __('Language')}} <span class="text-danger">*</span></label>
+					<select class="form-control" id="lang" name="lang">
+						<option value="en" @if($locale == 'cn') selected @endif>{{ __('English')}}</option>
+						<option value="zh-cn" @if($locale == 'zh-cn') selected @endif>{{ __('Chinese')}}</option>
+						<option value="zh-hk" @if($locale == 'zh-hk') selected @endif>{{ __('Hong Kong')}}</option>
+					</select>
+				</div>
+				<div class="form-group col-md-3">
 					<label for="page_title">{{ __('Page Title')}} <span class="text-danger">*</span></label>
 					<input type="text" class="form-control" name="page_title" id="page_title" placeholder="Title...">
 					<div class="alert alert-danger page_title_error" style="display: none;">{{ __('The field is required')}}!</div>
 				</div>
-				<div class="form-group col-md-4">
+				<div class="form-group col-md-3">
 					<label for="meta_title">{{ __('Meta Title')}} <span class="text-danger">*</span></label>
 					<input type="text" class="form-control" name="meta_title" id="meta_title" placeholder="Meta Title...">
 					<div class="alert alert-danger meta_title_error" style="display: none;">{{ __('The field is required')}}!</div>
@@ -112,8 +126,15 @@
 		</div>
 	</div>
 </div>
+<?php 
+    $locale = "en";
+    if (Session::has('locale')) {
+        $locale = session('locale'); 
+    }
+?>
 <!--end::Card-->
 <script type="text/javascript">
+	var LANGUAGE = "<?php echo $locale; ?>" 
 	var CMS_DATA_URL = "{{ route('admin.cms.getCmsData') }}";
 	var UPDATE_IS_ACTIVE_STATE_URL = "{{ route('admin.cms.updateIsActiveState') }}";
 	var UPDATE_IS_MENU_STATE_URL = "{{ route('admin.cms.updateIsMenuState') }}";
@@ -123,5 +144,6 @@
 	var DELETE_CMS_PAGE_URL = "{{ route('admin.cms.deleteCmsPage') }}";
 	var ADD_NEW_CMS_PAGE_URL = "{{ route('admin.cms.addNewCmsPage') }}";
 	var GET_CMS_DETAIL_URL = "{{ route('admin.cms.getCmsDetail') }}";
+	var GET_CMS_DETAIL_BY_LANGUAGE = "{{ route('admin.cms.getCmsDetailByLanguage') }}";
 </script>
 @endsection

@@ -117,6 +117,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::group(['prefix' => 'cms'], function() {
         Route::get('/', ['as' => 'admin.cms.index', 'uses' => 'App\Http\Controllers\admin\CmsController@index']);
         Route::get('getCmsData', ['as' => 'admin.cms.getCmsData', 'uses' => 'App\Http\Controllers\admin\CmsController@getCmsData']);
+        Route::get('getCmsDetailByLanguage', ['as' => 'admin.cms.getCmsDetailByLanguage', 'uses' => 'App\Http\Controllers\admin\CmsController@getCmsDetailByLanguage']);
         Route::post('updateIsActiveState', ['as' => 'admin.cms.updateIsActiveState', 'uses' => 'App\Http\Controllers\admin\CmsController@updateIsActiveState']);
         Route::post('updateIsMenuState', ['as' => 'admin.cms.updateIsMenuState', 'uses' => 'App\Http\Controllers\admin\CmsController@updateIsMenuState']);
         Route::post('updateIsHeaderState', ['as' => 'admin.cms.updateIsHeaderState', 'uses' => 'App\Http\Controllers\admin\CmsController@updateIsHeaderState']);

@@ -17,7 +17,7 @@
                     <li><a href="#">Model Service</a></li> -->
                     @if( isset($cmsPages) && (count($cmsPages) > 0 ))
                         @foreach($cmsPages as $cmspage)
-                            <li><a href="{{ route('base_url') . '/' . $cmspage->slug }}">{{ __($cmspage->slug) }}</a></li>
+                            <li><a href="{{ route('base_url') . '/' . $cmspage->slug }}">{{ __($cmspage->page_title) }}</a></li>
                         @endforeach
                     @endif
                 </ul>

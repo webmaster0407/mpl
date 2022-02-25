@@ -1,6 +1,7 @@
 "use strict";
 // Class definition
 var datatable;
+var is_edit_mode = true;
 var KTDatatableRemoteAjaxDemo = function() {
     // Private functions
     var summernotes = function () {
@@ -411,6 +412,85 @@ var KTDatatableRemoteAjaxDemo = function() {
             });
         });
     }
+    var languageSelectEventHandler = function() {
+
+        $('#lang').on('change', function() {
+            if (is_edit_mode === false) {
+                return;
+            }
+            var elem = $(this);
+            var lang = elem.val();
+            var id = $('#cms_hidden_id').val();
+
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content')
+                },
+                data: {
+                    id: id,
+                    lang: lang
+                },
+                type: "GET",
+                url: GET_CMS_DETAIL_BY_LANGUAGE,
+                beforeSend: function() {
+                    KTApp.blockPage({
+                        overlayColor: '#000000',
+                        state: 'primary',
+                        message: 'Processing...'
+                    });
+                },
+                success: function(data) {
+                    data = $.parseJSON(data);
+                    KTApp.unblockPage();
+                    if (data.status == "success") {
+                        var cms = data.data;
+                        $('#cms_hidden_id').val(cms.id);
+                        $('#lang').val(cms.lang);
+                        $('#slug').val(cms.slug);
+                        $('#page_title').val(cms.page_title);
+                        $('#meta_title').val(cms.meta_title);
+                        $('#meta_keyword').val(cms.meta_keyword);
+                        $('#meta_description').val(cms.meta_description);
+                        $('#page_sub_title').val(cms.page_sub_title);
+                        $('#page_sub_group').val(cms.page_sub_group);
+                        $('#short_desc').val(cms.short_desc);
+                        $('#cms_description').summernote('code',cms.description);
+                        $('#is_active').prop('checked', (cms.is_active === 'yes'));
+                        $('#is_menu').prop('checked', (cms.is_menu === 'yes'));
+                        $('#is_header').prop('checked', (cms.is_header === 'yes'));
+                        $('#is_footer').prop('checked', (cms.is_footer === 'yes'));
+                    } else {
+                        swal.fire({
+                            text: 'Oops! Something went wrong!',
+                            icon: "error",
+                            buttonsStyling: false,
+                            confirmButtonText: "Ok, got it!",
+                            customClass: {
+                                confirmButton: "btn font-weight-bold btn-light-primary"
+                            }
+                        }).then(function() {
+                            console.log("Failed");
+                        });
+                    }
+                },
+                error: function(error) {
+                    KTApp.unblockPage();
+                    swal.fire({
+                        text: "Server error!",
+                        icon: "error",
+                        buttonsStyling: false,
+                        confirmButtonText: "Ok, got it!",
+                        customClass: {
+                            confirmButton: "btn font-weight-bold btn-light-primary"
+                        }
+                    }).then(function() {
+                        KTUtil.scrollTop();
+                        console.log("server error");
+                    });
+                }
+            });
+        });
+    };
 
     var AddEditDeleteCmsPageHandler = function() {
 
@@ -420,9 +500,10 @@ var KTDatatableRemoteAjaxDemo = function() {
             $('#kt_datatable').hide();
             $('#add_edit_cms_section').show();
             $('.cms_search_section').hide();
-
             $('.cms_save_btn').hide();
             $('.cms_add_btn').show();
+            is_edit_mode = false;
+            $('#lang').val(LANGUAGE);
         });
         // cancel btn handler
         $('.cms_cancel_btn').on('click', function() {
@@ -455,6 +536,7 @@ var KTDatatableRemoteAjaxDemo = function() {
 
             // reload datatable
             datatable.reload();
+            is_edit_mode = false;
         });
 
         // add cms page
@@ -466,6 +548,7 @@ var KTDatatableRemoteAjaxDemo = function() {
             }
 
             var slug = $('#slug').val();
+            var lang = $('#lang').val();
             var page_tite = $('#page_title').val();
             var meta_title = $('#meta_title').val();
             var meta_keyword = $('#meta_keyword').val();
@@ -485,6 +568,7 @@ var KTDatatableRemoteAjaxDemo = function() {
                 },
                 data: {
                     slug : slug,
+                    lang : lang,
                     page_tite : page_tite,
                     meta_title : meta_title,
                     meta_keyword : meta_keyword,
@@ -562,6 +646,7 @@ var KTDatatableRemoteAjaxDemo = function() {
 
             $('.cms_save_btn').show();
             $('.cms_add_btn').hide();
+            is_edit_mode = true;
 
             var id = $(this).attr('data-val');
             $('#cms_hidden_id').val(id);
@@ -588,6 +673,7 @@ var KTDatatableRemoteAjaxDemo = function() {
                     if (data.status == "success") {
                         var cms = data.data;
                         $('#cms_hidden_id').val(cms.id);
+                        $('#lang').val(cms.lang);
                         $('#slug').val(cms.slug);
                         $('#page_title').val(cms.page_title);
                         $('#meta_title').val(cms.meta_title);
@@ -642,8 +728,8 @@ var KTDatatableRemoteAjaxDemo = function() {
                 KTUtil.scrollTop();
                 return;
             }
-
             var id = $('#cms_hidden_id').val();
+            var lang = $('#lang').val();
             var slug = $('#slug').val();
             var page_tite = $('#page_title').val();
             var meta_title = $('#meta_title').val();
@@ -664,6 +750,7 @@ var KTDatatableRemoteAjaxDemo = function() {
                 },
                 data: {
                     id: id,
+                    lang: lang,
                     slug : slug,
                     page_tite : page_tite,
                     meta_title : meta_title,
@@ -891,6 +978,7 @@ var KTDatatableRemoteAjaxDemo = function() {
             demo();
             ActiveBtnEventHandlers();
             AddEditDeleteCmsPageHandler();
+            languageSelectEventHandler();
         },
     };
 }();
