@@ -25,7 +25,8 @@ class HomeController extends Controller
                 "doChangePassword",
                 "uploadPhotosBeforeRegister",
                 "deletePhotosBeforeRegister",
-                "logout"
+                "logout",
+                "resetPassword"
             );
     }
 
@@ -535,4 +536,6 @@ class HomeController extends Controller
     //     }
     //     echo json_encode($data);
     // }
+
+    /********************     Reset password      ****************/
 }

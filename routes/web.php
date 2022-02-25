@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\HomeController as adminHomeController;
-
+use App\Http\Controllers\Auth\ForgotPasswordController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -62,6 +62,12 @@ Route::post('doChangePassword', ['as' => 'doChangePassword',    'uses' => 'App\H
 Route::post('uploadPhotosBeforeRegister', ['as' => 'uploadPhotosBeforeRegister',    'uses' => 'App\Http\Controllers\HomeController@uploadPhotosBeforeRegister']);
 Route::post('deletePhotosBeforeRegister', ['as' => 'deletePhotosBeforeRegister',    'uses' => 'App\Http\Controllers\HomeController@deletePhotosBeforeRegister']);
 Route::get('logout', ['as' => 'logout',    'uses' => 'App\Http\Controllers\HomeController@logout']);
+
+
+Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
+Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post'); 
+Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
+Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 // end::HomeController Routes
 
 // begin::TalentController Routes 
