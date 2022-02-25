@@ -15,8 +15,12 @@
 <link href="{{ asset('assets/admin/css/themes/layout/brand/dark.css')}}" rel="stylesheet" type="text/css" />
 <link href="{{ asset('assets/admin/css/themes/layout/aside/dark.css')}}" rel="stylesheet" type="text/css" />
 <!--end::Layout Themes-->
-<link rel="shortcut icon" href="{{ asset('assets/admin/media/logos/favicon.ico')}}" />
 
+<link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/front/images/favicon//apple-touch-icon.png')}}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/front/images/favicon/favicon-32x32.png')}}">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/front/images/favicon/favicon-16x16.png')}}">
+<link rel="shortcut icon" href="{{ asset('assets/front/images/favicon/favicon.ico')}}" />
+<link rel="manifest" href="{{ asset('assets/front/images/favicon//site.webmanifest')}}">
 
 <!-- begin::custom styles -->
 @if(isset($page_sub_title) && ($page_sub_title == 'Talents'))
