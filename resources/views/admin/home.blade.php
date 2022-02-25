@@ -65,7 +65,13 @@
 					</svg>
 					<!--end::Svg Icon-->
 				</span>
-				<a href="#" class="text-danger font-weight-bold font-size-h6 mt-2">{{ __('Item Orders') }}</a>
+				<a href="#" class="text-danger font-weight-bold font-size-h6 mt-2">
+					@if(isset($category_avg) && (count($category_avg) > 0) )
+						@foreach($category_avg as $category)
+							<h3><span>{{ __($category->category) }} :</span> {{ $category->cnt }}</h3>
+						@endforeach 
+					@endif
+				</a>
 			</div>
 			<div class="col bg-light-success px-6 py-8 rounded-xl">
 				<span class="svg-icon svg-icon-3x svg-icon-success d-block my-2">
@@ -89,25 +95,4 @@
 <!--end::Body-->
 </div>
 <!--end::Mixed Widget 1-->
-<div class="row">
-	<div class="col-lg-12">
-		<div class="card">
-			<div class="card-header">
-				<h2>Total {{ $total_users }} Users </h2>
-			</div>
-			<div class="card-body">
-				<div class="row">
-
-					@if(isset($category_avg) && (count($category_avg) > 0) )
-						<div class="col-lg-6 col-md-6">
-						@foreach($category_avg as $category)
-							<h3><span>{{ $category->category }} </span> {{ $category->cnt }}</h3>
-						@endforeach 
-						</div>
-					@endif
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
 @endsection
