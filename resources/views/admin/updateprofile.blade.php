@@ -51,14 +51,14 @@
 				</div>
 
 				<div class="form-group row">
-					<label class="col-xl-3 col-lg-3 text-right col-form-label" for="name">Name</label>
+					<label class="col-xl-3 col-lg-3 text-right col-form-label" for="name">{{ __('Name') }}</label>
 					<div class="col-lg-9 col-xl-6">
 						<input class="form-control form-control-lg form-control-solid" type="text" name="name" id="name" value="{{ $admin->name }}" />
 						<div class="alert alert-danger name_error" style="display: none;">This field is required!</div>
 					</div>
 				</div>
 				<div class="form-group row">
-					<label class="col-xl-3 col-lg-3 text-right col-form-label" for="email">Email</label>
+					<label class="col-xl-3 col-lg-3 text-right col-form-label" for="email">{{ __('Email') }}</label>
 					<div class="col-lg-9 col-xl-6">
 						<input class="form-control form-control-lg form-control-solid"  type="email" name="email" id="email" value="{{ $admin->email }}" />
 						<div class="alert alert-danger email_error" style="display: none;">This field is required!</div>

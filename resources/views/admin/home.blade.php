@@ -7,7 +7,7 @@
 <div class="card card-custom bg-gray-100 card-stretch gutter-b">
 <!--begin::Header-->
 <div class="card-header border-0 bg-danger py-5">
-	<h3 class="card-title font-weight-bolder text-white">Total {{ $total_users }} Users </h3>
+	<h3 class="card-title font-weight-bolder text-white">{{ __('Total') }} {{ $total_users }} {{ __('Users') }} </h3>
 </div>
 <!--end::Header-->
 <!--begin::Body-->
@@ -33,7 +33,7 @@
 					</svg>
 					<!--end::Svg Icon-->
 				</span>
-				<a href="{{ route('admin.users.clients') }}" class="text-warning font-weight-bold font-size-h6">{{ __('Clients')}}   : <span>{{ __('Allowed')}} :  </span>{{ $total_clients_allowed }} <span> {{ __('Not Allowed')}} : </span>{{ $total_clients - $total_clients_allowed }}</a>
+				<a href="{{ route('admin.users.clients') }}" class="text-warning font-weight-bold font-size-h6">{{ __('Clients')}}   : <span>{{ __('Allowed')}} :  </span>{{ $total_clients_allowed }} <span> {{ __('Not Allowed') }} : </span>{{ $total_clients - $total_clients_allowed }}</a>
 			</div>
 			<div class="col bg-light-primary px-6 py-8 rounded-xl mb-7">
 				<span class="svg-icon svg-icon-3x svg-icon-primary d-block my-2">
@@ -47,7 +47,7 @@
 					</svg>
 					<!--end::Svg Icon-->
 				</span>
-				<a href="{{ route('admin.users.talents') }}" class="text-primary font-weight-bold font-size-h6 mt-2">{{__('Talents')}}   : <span>Allowed :  </span>{{ $total_talents_allowed }}<span> Not Allowed : </span>{{ $total_talents - $total_talents_allowed }}</a>
+				<a href="{{ route('admin.users.talents') }}" class="text-primary font-weight-bold font-size-h6 mt-2">{{__('Talents')}}   : <span>{{ __('Allowed')}} :  </span>{{ $total_talents_allowed }}<span> {{ __('Not Allowed')}} : </span>{{ $total_talents - $total_talents_allowed }}</a>
 			</div>
 		</div>
 		<!--end::Row-->
@@ -65,7 +65,7 @@
 					</svg>
 					<!--end::Svg Icon-->
 				</span>
-				<a href="#" class="text-danger font-weight-bold font-size-h6 mt-2">Item Orders</a>
+				<a href="#" class="text-danger font-weight-bold font-size-h6 mt-2">{{ __('Item Orders') }}</a>
 			</div>
 			<div class="col bg-light-success px-6 py-8 rounded-xl">
 				<span class="svg-icon svg-icon-3x svg-icon-success d-block my-2">
@@ -79,7 +79,7 @@
 					</svg>
 					<!--end::Svg Icon-->
 				</span>
-				<a href="#" class="text-success font-weight-bold font-size-h6 mt-2">Bug Reports</a>
+				<a href="#" class="text-success font-weight-bold font-size-h6 mt-2">{{ __('Bug Reports') }}</a>
 			</div>
 		</div>
 		<!--end::Row-->

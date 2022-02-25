@@ -13,7 +13,7 @@
 		<div class="card-toolbar">
 			<form class="ml-5">
 				<div class="input-group input-group-sm input-group-solid" style="max-width: 175px">
-					<input type="text" class="form-control" id="talents_search_form" placeholder="Search..." />
+					<input type="text" class="form-control" id="talents_search_form" placeholder="{{ __('Search...') }}" />
 					<div class="input-group-append">
 						<span class="input-group-text">
 							<span class="svg-icon">

@@ -140,6 +140,7 @@
 	"Go Back" : "回去",
 	"Birth Year" : "出生年",
 	"Category" : "类别",
+	"Categories" : "类别",
 	"Uploaded Photos" : "上传的照片",
 
 	"Back To Home": "返回首页",
@@ -150,5 +151,16 @@
 	"New Password": "新密码",
 	"Confirm Password": "确认密码",
 	"Don't have account": "没有账号",
-	"Footer Text": "MPL 拥有最先进的制作服务，可处理全香港范围内的小型至大型活动、活动和展览，并以卓越、可靠和创新在业内享有无与伦比的声誉。"
+	"Footer Text": "MPL 拥有最先进的制作服务，可处理全香港范围内的小型至大型活动、活动和展览，并以卓越、可靠和创新在业内享有无与伦比的声誉。",
+	"Allowed": "允许",
+	"Not Allowed": "不允许",
+	"Bug Reports": "錯誤報告",
+	"Item Orders": "项目订单",
+	"Total": "总数",
+	"Users": "用户",
+	"Client Management": "顾客管理",
+	"Talent Management": "人才管理",
+	"Search...": "搜索...",
+	"Update Profile": "更新个人信息",
+	"Avatar": "虚拟形象"
 }
