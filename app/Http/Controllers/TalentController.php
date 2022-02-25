@@ -12,7 +12,7 @@ use Session;
 class TalentController extends Controller
 {
     public function __construct() {
-        $this->middleware('auth');
+
     }
 
     public function index() {
@@ -285,8 +285,14 @@ class TalentController extends Controller
             ->where('talents.id', '=', $talent_id)
             ->where('categories.permission', '=', 'yes')
             ->first();
+        $user_id = DB::table('users')
+                ->leftJoin('talents', 'talents.user_id', '=', 'users.id')
+                ->select('users.id as id')
+                ->where('talents.id', '=', $talent_id)
+                ->first()
+                ->id;
         $talent_photos = DB::table('photos')
-            ->where('user_id', '=', Auth::user()->id)
+            ->where('user_id', '=', $user_id)
             ->where('permission', '=', 'yes')
             ->get();
 

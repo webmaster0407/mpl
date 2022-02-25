@@ -504,6 +504,7 @@ var KTDatatableRemoteAjaxDemo = function() {
             $('.cms_add_btn').show();
             is_edit_mode = false;
             $('#lang').val(LANGUAGE);
+            $('#slug').prop('readonly', false);
         });
         // cancel btn handler
         $('.cms_cancel_btn').on('click', function() {
@@ -537,6 +538,7 @@ var KTDatatableRemoteAjaxDemo = function() {
             // reload datatable
             datatable.reload();
             is_edit_mode = false;
+            $('#slug').prop('readonly', false);
         });
 
         // add cms page
@@ -604,7 +606,7 @@ var KTDatatableRemoteAjaxDemo = function() {
                                 confirmButton: "btn font-weight-bold btn-light-primary"
                             }
                         }).then(function() {
-
+                            $('.cms_cancel_btn').trigger('click');
                         });
                     } else {
                         swal.fire({
@@ -675,6 +677,7 @@ var KTDatatableRemoteAjaxDemo = function() {
                         $('#cms_hidden_id').val(cms.id);
                         $('#lang').val(cms.lang);
                         $('#slug').val(cms.slug);
+                        $('#slug').prop('readonly', true);
                         $('#page_title').val(cms.page_title);
                         $('#meta_title').val(cms.meta_title);
                         $('#meta_keyword').val(cms.meta_keyword);

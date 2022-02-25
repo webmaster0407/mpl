@@ -53,7 +53,7 @@ class HomeController extends Controller
         $sectionData3 = DB::table($table_name)->where('id', '=', 3)->first();
         $sectionData4 = DB::table($table_name)->where('id', '=', 4)->first();
 
-        $cmsPages = DB::table('cms')->where('is_active', '=', 'yes')->where('is_footer', '=', 'yes')->get();
+        $cmsPages = DB::table('cms')->where('is_active', '=', 'yes')->where('lang', '=', $locale)->where('is_footer', '=', 'yes')->get();
 
         return view('front.pages.home',
             compact(

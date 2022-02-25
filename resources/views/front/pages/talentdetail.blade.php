@@ -11,7 +11,7 @@
                 <span class="talent-category">{{__($talent_detail_info->category)}}</span>
                 <h1 class="talent-fullname">{{ $talent_detail_info->name }}</h1>
             </div>
-            @if(Auth::user()->role == 'client')
+            @if( (Auth::user() !== null) && (Auth::user()->role == 'client'))
             <div class="contact-info">
                 <a href="{{ 'https://wa.me/' . $talent_detail_info->phone}}"><i class="icon-whatsapp"></i></a>
                 <span class="vseparator"></span>

@@ -11,7 +11,7 @@ use Session;
 class CmsPageController extends Controller
 {
     public function __construct() {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     public function index() {
@@ -19,11 +19,11 @@ class CmsPageController extends Controller
     }
 
     public function displayCmsPages(Request $request, $slug) {
-        $user = Auth::user();
+        // $user = Auth::user();
 
-        if ($slug == 'login' && $user !== null) {
-            return redirect(route('base_url'));
-        }
+        // if ($slug == 'login' && $user !== null) {
+        //     return redirect(route('base_url'));
+        // }
 
         $locale = "en";
         if (Session::has('locale')) {
@@ -34,7 +34,8 @@ class CmsPageController extends Controller
         if ($locale === "zh-cn") $prefix = "cn";
         if ($locale === "zh-hk") $prefix = "hk";
 
-        $cmsPage = Cms::where('slug', '=', $slug)->where('is_active', '=', 'yes')->first();
+        $cmsPage = Cms::where('slug', '=', $slug)->where('lang', '=', $locale)->where('is_active', '=', 'yes')->first();
+        if ($cmsPage === null) $cmsPage = Cms::where('slug', '=', $slug)->where('is_active', '=', 'yes')->first();
         if ($cmsPage === null) 
             abort(404);
 
