@@ -25,7 +25,7 @@
                 <div class="actions">
                     <a href="#" class="btn btn-secondary" id="loginBtn">{{ __('Login')}}</a>
                 </div>
-                <p>{{ __('Forgot password')}}? <a href="#">{{ __('Reset here')}}</a></p>
+                <p>{{ __('Forgot password')}}? <a href="{{ route('forget.password.get') }}">{{ __('Reset here')}}</a></p>
             </div>
             <div class="social-logins">
                 <div class="social-logins-desc">

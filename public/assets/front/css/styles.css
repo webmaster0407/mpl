@@ -825,6 +825,9 @@ header > .container {
 .btn-secondary {
   background-color: var(--blue);
   display: inline-block;
+  border: none;
+  outline: none;
+  color: #fff;
 }
 
 .btn-primary::after {
