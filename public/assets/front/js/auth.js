@@ -19,7 +19,7 @@ var AuthEventsHandlers = function() {
                     password : password
                 },
                 type: "POST",
-                url: LOGIN_URL,
+                url: DO_LOGIN_URL,
                 beforeSend: function() {
                     $.blockUI({ message: 'Please wait...<span class="spinner spinner-primary"></span>' });
                 },

@@ -43,7 +43,7 @@
 </section>
 
 <script type="text/javascript">
-	var LOGIN_URL = "{{ route('doLogin') }}";
+	var DO_LOGIN_URL = "{{ route('doLogin') }}";
 	var BASE_URL = "{{ route('base_url') }}";
 </script>
 @endsection
