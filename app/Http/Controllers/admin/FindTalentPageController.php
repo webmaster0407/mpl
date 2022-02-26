@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 use App\Models\Ftpages;
+use Image;
 
 class FindTalentPageController extends Controller
 {
@@ -41,6 +42,12 @@ class FindTalentPageController extends Controller
         $mediaName = time().$media->getClientOriginalName();
         $path = $request->file('file')->storeAs('uploads/FindTalentPage', $mediaName, 'public');
 
+        // begin::create thumbnail
+        $thumbnail =$request->file('file')->storeAs('uploads/FindTalentPage/thumbnail', $mediaName, 'public');
+        $thumbnailpath = public_path('storage/uploads/FindTalentPage/thumbnail/' . $mediaName);
+        $this->createThumbnail($thumbnailpath, 400, 400);
+        // end::create thumbnail
+
         $imageUpload = new Ftpages;
         $imageUpload->cat_id = $data['cat_id'];
         $imageUpload->path = "storage/".$path;
@@ -52,6 +59,13 @@ class FindTalentPageController extends Controller
         ];
         
         echo json_encode($data);
+    }
+
+    public function createThumbnail($path, $width, $height) {
+        $img = Image::make($path)->resize($width, $height, function ($constraint) {
+            $constraint->aspectRatio();
+        });
+        $img->save($path);
     }
 
     public function getUploadedftPhotos(Request $request) {
@@ -83,9 +97,14 @@ class FindTalentPageController extends Controller
         $id = $data['id'];
 
         $path = public_path() . '/' . Ftpages::where('id', '=', $id)->first()->path;
+        $path_array = explode('/', $path);
+        $cnt = count($path_array);
+        $path_array[$cnt-2] = $path_array[$cnt - 2] . '/thumbnail';
+        $thumbnailpath = implode('/', $path_array);
 
-        if ( file_exists($path) ) {
+        if ( file_exists( $path ) && file_exists( $thumbnailpath ) ) {
             @unlink($path);
+            @unlink($thumbnailpath);
             Ftpages::where('id', '=', $id)->delete();
             $data = [
                 'status' => 'success',

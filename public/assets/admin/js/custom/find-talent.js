@@ -120,10 +120,17 @@ var KTDropzoneDemo = function() {
                             var images = data.data;
                             var htmlContents = "";
                             images.forEach((image) => {
+                                var photoPath = image.path;
+                                var photoPathItemArray  = photoPath.split('/');
+                                var item_length = photoPathItemArray.length;
+                                if (photoPathItemArray[item_length - 1] != 'default.jpg')
+                                    photoPathItemArray[item_length - 2] = photoPathItemArray[item_length - 2] + '/thumbnail';
+                                photoPath = photoPathItemArray.join('/');
+
                                 htmlContents += "<div class='col-lg-3 col-md-4 col-sm-6 image-card'><div>";
                                 htmlContents += "<button class='select_as_banner btn btn-primary' data-val='" + image.id + "'><i class='flaticon2-correct'></i></button>";
                                 htmlContents += "<button class='delete_image btn btn-danger' data-val='" + image.id + "'><i class='flaticon-delete'></i></button></div>"
-                                htmlContents += ("<img src='" + BASE_URL + "/" + image.path + "'  />");
+                                htmlContents += ("<img src='" + BASE_URL + "/" + photoPath + "'  />");
                                 htmlContents += "</div>";
                             });
                             if (htmlContents == "") {
@@ -134,7 +141,13 @@ var KTDropzoneDemo = function() {
                             var current_banner_ft_image_content = "<h1>Banner Image for " + $('#banner_category option:selected').text() + " is not selected!</h1>";
                             var current_banner_ft_image = data.current_banner_ft_image;
                             if (current_banner_ft_image !== null) {
-                                current_banner_ft_image_content = "<img src='" + BASE_URL  + '/' + current_banner_ft_image.path + "' alt='banner image' />";
+                                var photoPath = current_banner_ft_image.path;
+                                var photoPathItemArray  = photoPath.split('/');
+                                var item_length = photoPathItemArray.length;
+                                if (photoPathItemArray[item_length - 1] != 'default.jpg')
+                                    photoPathItemArray[item_length - 2] = photoPathItemArray[item_length - 2] + '/thumbnail';
+                                photoPath = photoPathItemArray.join('/');
+                                current_banner_ft_image_content = "<img src='" + BASE_URL  + '/' + photoPath + "' alt='banner image' />";
                             }
                             $('#current_banner').html(current_banner_ft_image_content);
                         } else {
@@ -195,10 +208,17 @@ var KTDropzoneDemo = function() {
                             var images = data.data;
                             var htmlContents = "";
                             images.forEach((image) => {
+                                var photoPath = image.path;
+                                var photoPathItemArray  = photoPath.split('/');
+                                var item_length = photoPathItemArray.length;
+                                if (photoPathItemArray[item_length - 1] != 'default.jpg')
+                                    photoPathItemArray[item_length - 2] = photoPathItemArray[item_length - 2] + '/thumbnail';
+                                photoPath = photoPathItemArray.join('/');
+
                                 htmlContents += "<div class='col-lg-3 col-md-4 col-sm-6 image-card'><div>";
                                 htmlContents += "<button class='select_as_banner btn btn-primary' data-val='" + image.id + "'><i class='flaticon2-correct'></i></button>";
                                 htmlContents += "<button class='delete_image btn btn-danger' data-val='" + image.id + "'><i class='flaticon-delete'></i></button></div>"
-                                htmlContents += ("<img src='" + BASE_URL + "/" + image.path + "'  />");
+                                htmlContents += ("<img src='" + BASE_URL + "/" + photoPath + "'  />");
                                 htmlContents += "</div>";
                             });
                             if (htmlContents == "") {
@@ -209,7 +229,13 @@ var KTDropzoneDemo = function() {
                             var current_banner_ft_image_content = "<h1>Banner Image for " + $('#banner_category option:selected').text() + " is not selected!</h1>";
                             var current_banner_ft_image = data.current_banner_ft_image;
                             if (current_banner_ft_image !== null) {
-                                current_banner_ft_image_content = "<img src='" + BASE_URL + '/' + current_banner_ft_image.path + "' alt='banner image' />";
+                                var photoPath = current_banner_ft_image.path;
+                                var photoPathItemArray  = photoPath.split('/');
+                                var item_length = photoPathItemArray.length;
+                                if (photoPathItemArray[item_length - 1] != 'default.jpg')
+                                    photoPathItemArray[item_length - 2] = photoPathItemArray[item_length - 2] + '/thumbnail';
+                                photoPath = photoPathItemArray.join('/');
+                                current_banner_ft_image_content = "<img src='" + BASE_URL + '/' + photoPath + "' alt='banner image' />";
                             }
                             $('#current_banner').html(current_banner_ft_image_content);
                         } else {
