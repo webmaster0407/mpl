@@ -360,7 +360,6 @@ var editProfileEventHandlers = function() {
                     },
                     success: function(data) {
                         $.unblockUI();
-
                     },
                     error: function(e) {
                         $.unblockUI();

@@ -6,7 +6,7 @@
 <section id="section-talentcategories" class="d-flex flex-column justify-content-center">
     <div class="container">
     	@if (isset($talents) && ( count($talents) > 0 ) )
-        <h1 class="section-title text-center">
+        <h1 class="section-title text-center" id="search_rlt_text">
         	{{count($talents)}} {{ __( $talents[0]->category )}} <span>{{ __('Found')}}</span>
         </h1>
         <div class="search-wrapper">
@@ -15,7 +15,7 @@
             	@if (isset($categories) && ( count($categories) > 0 ))
             	<select id="categories">
                 	@foreach($categories as $category)
-						<option value="{{ $category->id }}">{{ __( $category->name ) }}</option>
+						<option value="{{ $category->id }}" @if($cat_id == $category->id) selected @endif>{{ __( $category->name ) }}</option>
                 	@endforeach
  				<input type="text" id="keyword" name="keyword" placeholder="Search keyword" />
                 <a href="#" id="searchBtn"><i class="icon-search"></i></a>
@@ -53,7 +53,29 @@
         	<a href="#" id="loadmoreBtn" @if( count($talents) < $talentsPerPage ) style="display: none;" @endif><i class="icon-down"></i></a>
         	<span class="separator"></span></div>
         @else
-        <h1 class="section-title text-center">0 {{ __($cat_name)}} <span>{{ __('Found')}}</span></h1>
+        <h1 class="section-title text-center" id="search_rlt_text">0 {{ __($cat_name)}} <span>{{ __('Found')}}</span></h1>
+        <div class="search-wrapper">
+            <div class="search-container">
+                
+                @if (isset($categories) && ( count($categories) > 0 ))
+                <select id="categories">
+                    @foreach($categories as $category)
+                        <option value="{{ $category->id }}" @if($cat_id == $category->id) selected @endif>{{ __( $category->name ) }}</option>
+                    @endforeach
+                <input type="text" id="keyword" name="keyword" placeholder="Search keyword" />
+                <a href="#" id="searchBtn"><i class="icon-search"></i></a>
+                </select>
+                @else
+                <select disabled>
+                    <option value="">{{ __('')}}</option>
+                </select>
+                <input type="text" id="keyword" name="keyword" placeholder="Search keyword"  readonly />
+                <a href="javascript:;" disabled><i class="icon-search"></i></a>
+                @endif
+               
+            </div>
+        </div>
+        <div class="talent-list"></div>
         @endif
     </div>
 </section>

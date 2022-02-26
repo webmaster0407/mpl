@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Session;
-
+use Image;
 
 class ProfileController extends Controller
 {
@@ -271,6 +271,12 @@ class ProfileController extends Controller
         $photoName = $photo->getClientOriginalName();
         $path = $request->file('file')->storeAs('uploads/photos', $photoName, 'public');
 
+        // begin::create thumbnail
+        $thumbnail =$request->file('file')->storeAs('uploads/photos/thumbnail', $photoName, 'public');
+        $thumbnailpath = public_path('storage/uploads/photos/thumbnail/' . $photoName);
+        $this->createThumbnail($thumbnailpath, 400, 400);
+        // end::create thumbnail
+
         $photo_id = DB::table('photos')
             ->insertGetId([
                 'user_id' => Auth::user()->id,
@@ -287,17 +293,31 @@ class ProfileController extends Controller
         echo json_encode($data);
     }
 
+    public function createThumbnail($path, $width, $height) {
+        $img = Image::make($path)->resize($width, $height, function ($constraint) {
+            $constraint->aspectRatio();
+        });
+        $img->save($path);
+    }
+
     public function deletePhotoUploadedJustByDropzone(Request $request) {
         $filename =  $request->get('filename');
         $path = 'storage/uploads/photos/' . $filename;
+        $thumbnailpath = 'storage/uploads/photos/thumbnail/' . $filename;
 
         DB::table('photos')
             ->where('path', '=', $path)
             ->delete();
 
+        // delete thumbnail and 
         $path = public_path() . '/' . $path;
-        if ( file_exists( $path ) ) {
+        $path_array = explode('/', $path);
+        $cnt = count($path_array);
+        $path_array[$cnt-2] = $path_array[$cnt-2] . '/thumbnail';
+        $thumbnailpath = implode('/', $path_array);
+        if ( file_exists( $path ) && file_exists( $thumbnailpath ) ) {
             @unlink($path);
+            @unlink($thumbnailpath);
             $data = [
                 'status' => 'success',
                 'message' => 'Photo deleted successfully!'
@@ -305,6 +325,8 @@ class ProfileController extends Controller
             echo json_encode($data);
             return;
         }
+        //
+
         $data = [
             'status' => 'failed',
             'message' => 'File does not exist'
@@ -322,8 +344,15 @@ class ProfileController extends Controller
             ->first();
         $path = public_path() . '/' . $photo->path;
 
-        if ( file_exists($path) ) {
+        // gen thumnail path
+        $path_array = explode('/', $path);
+        $cnt = count($path_array);
+        $path_array[$cnt-2] = $path_array[$cnt-2] . '/thumbnail';
+        $thumbnailpath = implode('/', $path_array);
+
+        if ( file_exists( $path ) && file_exists( $thumbnailpath ) ) {
             @unlink($path);
+            @unlink($thumbnailpath);
             DB::table('photos')->where('id', '=', $photo_id)->delete();
             $data = [
                 'status' => 'success',

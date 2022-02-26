@@ -131,8 +131,15 @@
                         <div class="uploaded_photos">
                             @if($photos !== null && (count($photos) > 0) )
                                 @foreach($photos as $photo)
+                                    <?php
+                                        $path = route('base_url') . '/' . $photo->path;
+                                        $path_array = explode('/', $path);
+                                        $cnt = count($path_array);
+                                        $path_array[$cnt-2] = $path_array[$cnt-2] . '/thumbnail';
+                                        $thumbnailpath = implode('/', $path_array);
+                                    ?>
                                     <div class="photo_item">
-                                        <img src="{{ route('base_url') . '/' . $photo->path }}" data-val="{{ $photo->id }}" style="width: 100%; height: auto;">
+                                        <img src="{{ $thumbnailpath }}" data-val="{{ $photo->id }}" style="width: 100%; height: auto;">
                                         <a href="#" class="photo_action_btn" data-val="{{ $photo->id }}"><svg width="54" height="54" fill="#fff"><path d="m26.293 20.293-7.086-7.086a1 1 0 0 0-1.414 0l-4.586 4.586a1 1 0 0 0 0 1.414l7.086 7.086a1 1 0 0 1 0 1.414l-7.086 7.086a1 1 0 0 0 0 1.414l4.586 4.586a1 1 0 0 0 1.414 0l7.086-7.086a1 1 0 0 1 1.414 0l7.086 7.086a1 1 0 0 0 1.414 0l4.586-4.586a1 1 0 0 0 0-1.414l-7.086-7.086a1 1 0 0 1 0-1.414l7.086-7.086a1 1 0 0 0 0-1.414l-4.586-4.586a1 1 0 0 0-1.414 0l-7.086 7.086a1 1 0 0 1-1.414 0Z"></path></svg></a>
                                     </div>
                                 @endforeach

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use Hash;
 use Session;
+use Image;
 
 class HomeController extends Controller
 {
@@ -361,6 +362,7 @@ class HomeController extends Controller
                 'job_reference' => $job_reference
             ]);
 
+            // begin::save images to db
             $imageNames = $data['imageNames'];
             $nameArray = explode(',', $imageNames);
             $ids = '';
@@ -376,11 +378,7 @@ class HomeController extends Controller
                     }
                 }
             }
-
-            // begin::store file and save uploaded photos in db
-
-
-            // end::store file and save uploaded photos in db
+            // end::save images to db
 
             $data = [
                 'status' => 'success',
@@ -471,12 +469,9 @@ class HomeController extends Controller
         $photo = $request->file('file');
         $photoName = $photo->getClientOriginalName();
         $path = $request->file('file')->storeAs('uploads/photos', $photoName, 'public');
-
-        // $photo_id = DB::table('photos')
-        //     ->insertGetId([
-        //         'user_id' => Auth::user()->id,
-        //         'path' => 'storage/' . $path
-        //     ]);
+        $thumbnail =$request->file('file')->storeAs('uploads/photos/thumbnail', $photoName, 'public');
+        $thumbnailpath = public_path('storage/uploads/photos/thumbnail/' . $photoName);
+        $this->createThumbnail($thumbnailpath, 400, 400);
 
         $data = [
             'status' => 'success',
@@ -486,17 +481,25 @@ class HomeController extends Controller
         echo json_encode($data);
     }
 
+    public function createThumbnail($path, $width, $height) {
+        $img = Image::make($path)->resize($width, $height, function ($constraint) {
+            $constraint->aspectRatio();
+        });
+        $img->save($path);
+    }
+
     public function deletePhotosBeforeRegister(Request $request) {
         $filename =  $request->get('filename');
-        $path = 'storage/uploads/photos' . $filename;
-
-        // DB::table('photos')
-        //     ->where('path', '=', $path)
-        //     ->delete();
+        $path = 'storage/uploads/photos/' . $filename;
 
         $path = public_path() . '/' . $path;
-        if ( file_exists( $path ) ) {
+        $path_array = explode('/', $path);
+        $cnt = count($path_array);
+        $path_array[$cnt-2] = $path_array[$cnt-2] . '/thumbnail';
+        $thumbnailpath = implode('/', $path_array);
+        if ( file_exists( $path ) && file_exists( $thumbnailpath ) ) {
             @unlink($path);
+            @unlink($thumbnailpath);
             $data = [
                 'status' => 'success',
                 'message' => $filename

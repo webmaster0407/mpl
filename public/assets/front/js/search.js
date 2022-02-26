@@ -55,8 +55,15 @@ var searchHandlers = function() {
                     	paths = data.paths;
                 		var talents_content = "";
                 		for ( let i = 0; i < talents.length; i++) {
+                            var photoPath = paths[i];
+                            var photoPathItemArray  = photoPath.split('/');
+                            var item_length = photoPathItemArray.length;
+                            if (photoPathItemArray[item_length - 1] != 'default.jpg')
+                                photoPathItemArray[item_length - 2] = photoPathItemArray[item_length - 2] + '/thumbnail';
+                            photoPath = photoPathItemArray.join('/');
+
             				talents_content += "<div class='grid'>";
-            				talents_content += "<img src='" + paths[i] + "' alt ='" + talents[i].name + "' title= '" + talents[i].name + "' />";
+            				talents_content += "<img src='" + photoPath + "' alt ='" + talents[i].name + "' title= '" + talents[i].name + "' />";
             				talents_content += "<div class='talent-info'>";
             				talents_content += ("<h5>" + talents[i].name + "</h5>");
             			//	talents_content += ("<p>" + talents[i].job_reference + "</p>");
@@ -70,6 +77,8 @@ var searchHandlers = function() {
                 		} else  {
                 			$('#loadmoreBtn').show();
                 		}
+
+                        $('#search_rlt_text').html( talents.length + ' ' + data.category + '<span> Found</span>');
                     } else {
                         swal({
                             title: data.message,
@@ -125,8 +134,15 @@ var searchHandlers = function() {
                     	paths = data.paths;
                 		var talents_content = "";
                 		for ( let i = 0; i < talents.length; i++) {
+                            var photoPath = paths[i];
+                            var photoPathItemArray  = photoPath.split('/');
+                            var item_length = photoPathItemArray.length;
+                            if (photoPathItemArray[item_length - 1] != 'default.jpg')
+                                photoPathItemArray[item_length - 2] = photoPathItemArray[item_length - 2] + '/thumbnail';
+                            photoPath = photoPathItemArray.join('/');
+
             				talents_content += "<div class='grid'>";
-            				talents_content += "<img src='" + paths[i] + "' alt ='" + talents[i].name + "' title= '" + talents[i].name + "' />";
+            				talents_content += "<img src='" + photoPath + "' alt ='" + talents[i].name + "' title= '" + talents[i].name + "' />";
             				talents_content += "<div class='talent-info'>";
             				talents_content += ("<h5>" + talents[i].name + "</h5>");
             			//	talents_content += ("<p>" + talents[i].job_reference + "</p>");
@@ -140,6 +156,7 @@ var searchHandlers = function() {
                 		} else  {
                 			$('#loadmoreBtn').show();
                 		}
+                        $('#search_rlt_text').html( talents.length + ' ' + data.category + '<span> Found</span>');
                     } else {
                         swal({
                             title: data.message,

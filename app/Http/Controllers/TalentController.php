@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Talents;
 use Session;
+use Image;
 
 class TalentController extends Controller
 {
@@ -149,6 +150,11 @@ class TalentController extends Controller
                         $photo_path = $default_path;  
                     } else {
                         $photo_path = route('base_url') . '/' . $pathArray[$k]; 
+                        // make thumbnail path
+                        $path_array = explode('/', $photo_path);
+                        $cnt = count($path_array);
+                        $path_array[$cnt-2] = $path_array[$cnt-2] . '/thumbnail';
+                        $photo_path = implode('/', $path_array);
                     }
 
                 } else {            // have no photo
@@ -175,7 +181,8 @@ class TalentController extends Controller
                 'cat_name',
                 'categories',
                 'talentsPerPage',
-                'path'
+                'path',
+                'cat_id'
             )
         );
     }
@@ -256,12 +263,15 @@ class TalentController extends Controller
             $lp = 0;
         }
 
+        $category_name = DB::table('categories')->where('id', '=', $cat_id)->first()->name;
+
         // end::get path of photos of  every talents
 
         $data = [
             'status' => 'success',
             'data' => $talents,
-            'paths' => $path
+            'paths' => $path,
+            'category' => $category_name
         ];
 
         echo json_encode($data);
