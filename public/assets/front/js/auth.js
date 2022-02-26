@@ -529,6 +529,47 @@ var AuthEventsHandlers = function() {
 
             }
         });
+
+        // delete uploaded photos when user leave register window\
+        $('#return_to_login').on('click', function(e) {
+            e.preventDefault();
+
+            var imageUrls = $('#hidden_images').val();
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content')
+                },
+                data: {
+                    imageUrls : imageUrls
+                },
+                type: "POST",
+                url: DELETE_PHOTO_WHEN_USER_LEAVE_REGISTER_WINDOW,
+                beforeSend: function() {
+                    $.blockUI({ message: 'Please wait...<span class="spinner spinner-primary"></span>' });
+                },
+                success: function(data) {
+                    data = $.parseJSON(data);
+                    $.unblockUI();
+                    if (data.status == "success") {
+                        window.location.href = LOGIN_URL;
+                    } else {
+                        console.log('failed');
+                        window.location.href = LOGIN_URL;
+                    }
+                },
+                error: function(error) {
+                    $.unblockUI();
+                    swal({
+                        title: 'Server Error!',
+                        type: 'error',
+                        confirmButtonText: "Ok, got it!",
+                        confirmButtonClass: 'btn-warning',
+                        showConfirmButton: false,
+                        timer: 3000,
+                    });
+                }
+            });
+        });
     };
 
 

@@ -167,7 +167,7 @@
                 <div class="actions">
                     <a href="#" class="btn btn-secondary" id="registerAsTalentBtn">{{ __('Submit')}}</a>
                 </div>
-                <p class="text-right">{{ __('Already registered')}}? <a href="{{ route('login') }}">{{ __('Login here')}}</a></p>
+                <p class="text-right">{{ __('Already registered')}}? <a href="#" id="return_to_login">{{ __('Login here')}}</a></p>
             </div>
         </div>
     </div>

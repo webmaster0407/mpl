@@ -9,6 +9,8 @@
     Dropzone.autoDiscover = false;
     var UPLOAD_PHOTO_BEFORE_REGISTER_URL    = "{{ route('uploadPhotosBeforeRegister') }}";
     var DELETE_PHOTO_BEFORE_REGISTER_URL    = "{{ route('deletePhotosBeforeRegister') }}";
+    var DELETE_PHOTO_WHEN_USER_LEAVE_REGISTER_WINDOW    = "{{ route('deletePhotosWhenUserLeaveRegisterWindow') }}";
+    var LOGIN_URL = "{{ route('login') }}";
 </script>
 <script src="{{ asset('assets/front/js/main.js')}}"></script>
 <script src="{{ asset('assets/front/js/auth.js')}}"></script>

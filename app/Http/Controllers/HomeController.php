@@ -26,6 +26,7 @@ class HomeController extends Controller
                 "doChangePassword",
                 "uploadPhotosBeforeRegister",
                 "deletePhotosBeforeRegister",
+                'deletePhotosWhenUserLeaveRegisterWindow',
                 "logout",
                 "resetPassword"
             );
@@ -488,6 +489,41 @@ class HomeController extends Controller
         $img->save($path);
     }
 
+    public function deletePhotosWhenUserLeaveRegisterWindow(Request $request) {
+        $data = $request->all();
+
+        // begin::delete  images that uploaded before user registered
+        $imageNames = $data['imageUrls'];
+        $nameArray = explode(',', $imageNames);
+        $ids = '';
+        if (isset($nameArray) && (count($nameArray) > 0)) {
+            foreach($nameArray as $name) {
+                if ( $name !== "" ) {
+                    $path = 'storage/uploads/photos/' . $name;
+                    $thumbnailpath = 'storage/uploads/photos/thumbnail/' . $name;
+                    if ( file_exists( $path ) && file_exists( $thumbnailpath ) ) {
+                        @unlink($path);
+                        @unlink($thumbnailpath);
+                    } else {
+                        $data = [
+                            'status' => 'failed',
+                            'message' => 'file does not exist'
+                        ];
+                        echo json_encode($data);
+                        return; 
+                    }
+                } 
+            }
+        }
+        // end::delete  images that uploaded before user registered
+        $data = [
+            'status' => 'success',
+            'message' => 'ok'
+        ];
+        echo json_encode($data);
+        return;
+    } 
+
     public function deletePhotosBeforeRegister(Request $request) {
         $filename =  $request->get('filename');
         $path = 'storage/uploads/photos/' . $filename;
@@ -514,31 +550,6 @@ class HomeController extends Controller
         echo json_encode($data);
         return;  
     }
-
-    // public function deletePhotos(Request $request) {
-    //     $data = $request->only('id');
-    //     $photo_id = $data['id'];
-
-    //     $photo = DB::table('photos')
-    //         ->where('id', '=', $photo_id)
-    //         ->first();
-    //     $path = public_path() . '/' . $photo->path;
-
-    //     if ( file_exists($path) ) {
-    //         @unlink($path);
-    //         DB::table('photos')->where('id', '=', $photo_id)->delete();
-    //         $data = [
-    //             'status' => 'success',
-    //             'message' => 'Photo deleted successfully!'
-    //         ];
-    //     } else {
-    //         $data = [
-    //             'status' => 'failed',
-    //             'message' => 'File does not exist'
-    //         ];
-    //     }
-    //     echo json_encode($data);
-    // }
 
     /********************     Reset password      ****************/
 }

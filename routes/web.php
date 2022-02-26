@@ -60,7 +60,8 @@ Route::post('doRegister', ['as' => 'doRegister',    'uses' => 'App\Http\Controll
 Route::get('changePassword', ['as' => 'changePassword',    'uses' => 'App\Http\Controllers\HomeController@changePassword']);
 Route::post('doChangePassword', ['as' => 'doChangePassword',    'uses' => 'App\Http\Controllers\HomeController@doChangePassword']);
 Route::post('uploadPhotosBeforeRegister', ['as' => 'uploadPhotosBeforeRegister',    'uses' => 'App\Http\Controllers\HomeController@uploadPhotosBeforeRegister']);
-Route::post('deletePhotosBeforeRegister', ['as' => 'deletePhotosBeforeRegister',    'uses' => 'App\Http\Controllers\HomeController@deletePhotosBeforeRegister']);
+Route::post('deletePhotosBeforeRegister', ['as' => 'deletePhotosBeforeRegister',    'uses' => 'App\Http\Controllers\HomeController@deletePhotosBeforeRegister']); 
+Route::post('deletePhotosWhenUserLeaveRegisterWindow', ['as' => 'deletePhotosWhenUserLeaveRegisterWindow',    'uses' => 'App\Http\Controllers\HomeController@deletePhotosWhenUserLeaveRegisterWindow']);
 Route::get('logout', ['as' => 'logout',    'uses' => 'App\Http\Controllers\HomeController@logout']);
 
 
