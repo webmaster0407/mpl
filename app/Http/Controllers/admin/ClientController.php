@@ -22,7 +22,7 @@ class ClientController extends Controller
         $page_sub_title = "Clients";
         $page_sub_group = "Users";
 
-        return view('admin.users.Clients',
+        return view('admin.users.clients',
             compact(
                 'page_title',
                 'page_description',

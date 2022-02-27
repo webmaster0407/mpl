@@ -24,7 +24,7 @@ class TalentController extends Controller
 
         // $categories = DB::table('categories')->where('permission', '=', 'yes')->get();
         $categories = DB::table('categories')->get();
-        return view('admin.users.Talents',
+        return view('admin.users.talents',
             compact(
                 'page_title',
                 'page_description',
