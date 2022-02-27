@@ -349,7 +349,7 @@ class HomeController extends Controller
             $hips = $data['hips'];
             $shoes = $data['shoes'];
             $job_reference = $data['job_reference'];
-            $new_id = DB::table('talents')->insertGetId([
+            DB::table('talents')->insert([
                 'user_id' => $new_user_id,
                 'cat_id' => $cat_id,
                 'gender' => $gender,
@@ -366,14 +366,13 @@ class HomeController extends Controller
             // begin::save images to db
             $imageNames = $data['imageNames'];
             $nameArray = explode(',', $imageNames);
-            $ids = '';
             if (isset($nameArray) && (count($nameArray) > 0)) {
                 foreach($nameArray as $name) {
                     if ( $name !== "" ) {
                         $path = 'storage/uploads/photos/' . $name;
                         DB::table('photos')
-                                ->insertGetId([
-                                    'user_id' => $new_id,
+                                ->insert([
+                                    'user_id' => $new_user_id,
                                     'path' => $path
                                 ]);
                     }

@@ -244,9 +244,9 @@ var AuthEventsHandlers = function() {
             var shoes = $('#shoes').val();
             var job_reference = $('#job_reference').val();
             var gender = $("input[name='gender']:checked").val();
-            // special
+            // begin:special
             var imageNames = $('#hidden_images').val();
-            // special
+            // end:special
 
             $.ajax({
                 headers: {

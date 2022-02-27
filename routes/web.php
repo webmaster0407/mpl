@@ -51,6 +51,7 @@ Route::get('language/zh-hk', function () {
 */
 // begin::HomeController routes
 Route::get('/',     ['as' => 'base_url',    'uses' => 'App\Http\Controllers\HomeController@index']);
+Route::get('/home',     ['as' => 'home_url',    'uses' => 'App\Http\Controllers\HomeController@index']);
 Route::get('login', ['as' => 'login',    'uses' => 'App\Http\Controllers\HomeController@login']);
 Route::post('doLogin', ['as' => 'doLogin',    'uses' => 'App\Http\Controllers\HomeController@doLogin']);
 Route::get('register', ['as' => 'register',    'uses' => 'App\Http\Controllers\HomeController@register']);
