@@ -82,11 +82,12 @@ class CmsController extends Controller
         $data = $request->all();
         $id = $data['id'];
         $current_state = $data['state'];
-
         $new_state = (( $current_state === 'yes' ) ? 'no' : 'yes');
 
+        $slug = DB::table('cms')->where('id', '=', $id)->first()->slug;
+
         DB::table('cms')
-                ->where('id', '=', $id)
+                ->where('slug', '=', $slug)
                 ->update([
                     'is_menu' => $new_state
                 ]);
@@ -101,11 +102,12 @@ class CmsController extends Controller
         $data = $request->all();
         $id = $data['id'];
         $current_state = $data['state'];
-
         $new_state = (( $current_state === 'yes' ) ? 'no' : 'yes');
 
+        $slug = DB::table('cms')->where('id', '=', $id)->first()->slug;
+
         DB::table('cms')
-                ->where('id', '=', $id)
+                ->where('slug', '=', $slug)
                 ->update([
                     'is_header' => $new_state
                 ]);
@@ -120,11 +122,12 @@ class CmsController extends Controller
         $data = $request->all();
         $id = $data['id'];
         $current_state = $data['state'];
-
         $new_state = (( $current_state === 'yes' ) ? 'no' : 'yes');
 
+        $slug = DB::table('cms')->where('id', '=', $id)->first()->slug;
+
         DB::table('cms')
-                ->where('id', '=', $id)
+                ->where('slug', '=', $slug)
                 ->update([
                     'is_footer' => $new_state
                 ]);
