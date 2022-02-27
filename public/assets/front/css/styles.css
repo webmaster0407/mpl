@@ -1189,6 +1189,9 @@ input:-webkit-autofill:active {
   margin-top: 25px;
   margin-bottom: 12px;
 }
+.social-logins {
+  display: none;
+}
 .social-logins-desc {
   display: inline-block;
   margin-bottom: 15px;
