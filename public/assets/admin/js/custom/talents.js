@@ -281,11 +281,19 @@ var KTAppsUsersListDatatable = function() {
                         var photoContents = "";
                         photos.forEach((photo) => {
                         	var state = photo.permission;
+                            var photoPath = photo.path;
+                            var photoPathItemArray  = photoPath.split('/');
+                            var item_length = photoPathItemArray.length;
+                            if (photoPathItemArray[item_length - 1] != 'default.jpg')
+                                photoPathItemArray[item_length - 2] = photoPathItemArray[item_length - 2] + '/thumbnail';
+                            photoPath = photoPathItemArray.join('/');
+
+                        	
                         	var state_class = (photo.permission === 'yes') ? 'permissionStateBtn btn btn-primary' : 'permissionStateBtn btn btn-warning';
                             photoContents += "<div class='col-lg-3 col-md-4 col-sm-6 image-card'><div>";
                             photoContents += "<button class='" + state_class + "' data-id='" + photo.id + "' data-val='" + photo.permission + "'><i class='flaticon2-correct'></i></button>";
                             photoContents += "<button class='delete_photo btn btn-danger' data-id='" + photo.id + "'><i class='flaticon-delete'></i></button></div>"
-                            photoContents += ("<img src='" + BASE_URL + "/" + photo.path + "'  />");
+                            photoContents += ("<img src='" + BASE_URL + "/" + photoPath + "'  />");
                             photoContents += "</div>";
                         });
                         if (photoContents == "") {
