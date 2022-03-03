@@ -83,6 +83,7 @@ class HomePageController extends Controller
         $title = $data['title'];
         $link = $data['link'];
         $desc = $data['description'];
+        $newtab = $data['newtab'];
 
         $table_name = "_homepages";
         if ( $lang == "en" ) {
@@ -111,7 +112,8 @@ class HomePageController extends Controller
                         'id' => $section_number,
                         'title' => $title,
                         'link' => $link,
-                        'description' => $desc
+                        'description' => $desc,
+                        'newtab' => $newtab,
                     ]
                 );
         } else {
@@ -121,7 +123,8 @@ class HomePageController extends Controller
                     [
                         'title' => $title,
                         'link' => $link,
-                        'description' => $desc
+                        'description' => $desc,
+                        'newtab' => $newtab,
                     ]
                 );
         }

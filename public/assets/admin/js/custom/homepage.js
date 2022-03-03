@@ -45,6 +45,7 @@ jQuery(document).ready(function() {
         var desc = $('#section1_description').summernote('code');
         var title = $("#section1_title").val();
         var link = $("#section1_link").val();
+        var newtab = $("#section1_newtab").val() == "on" ? 1 : 0;
 
 
         $.ajax({
@@ -60,6 +61,7 @@ jQuery(document).ready(function() {
                 title: title,
                 link: link,
                 description: desc,
+                newtab: newtab,
             },
             beforeSend: function() {
                 KTApp.blockPage({
@@ -133,7 +135,7 @@ jQuery(document).ready(function() {
         var desc = $('#section2_description').summernote('code');
         var title = $("#section2_title").val();
         var link = $("#section2_link").val();
-
+        var newtab = $("#section2_newtab").val() == "on" ? 1 : 0;
 
         $.ajax({
             headers: {
@@ -148,6 +150,7 @@ jQuery(document).ready(function() {
                 title: title,
                 link: link,
                 description: desc,
+                newtab: newtab,
             },
             beforeSend: function() {
                 KTApp.blockPage({
@@ -220,6 +223,7 @@ jQuery(document).ready(function() {
         var desc = $('#section3_description').summernote('code');
         var title = $("#section3_title").val();
         var link = $("#section3_link").val();
+        var newtab = $("#section3_newtab").val() == "on" ? 1 : 0;
 
 
         $.ajax({
@@ -235,6 +239,7 @@ jQuery(document).ready(function() {
                 title: title,
                 link: link,
                 description: desc,
+                newtab: newtab,
             },
             beforeSend: function() {
                 KTApp.blockPage({
@@ -307,6 +312,7 @@ jQuery(document).ready(function() {
         var desc = $('#section4_description').summernote('code');
         var title = $("#section4_title").val();
         var link = $("#section4_link").val();
+        var newtab = $("#section4_newtab").val() == "on" ? 1 : 0;
 
 
         $.ajax({
@@ -322,6 +328,7 @@ jQuery(document).ready(function() {
                 title: title,
                 link: link,
                 description: desc,
+                newtab: newtab,
             },
             beforeSend: function() {
                 KTApp.blockPage({
@@ -418,10 +425,12 @@ jQuery(document).ready(function() {
                         $('#section1_description').summernote('code',"");
                         $("#section1_title").val("");
                         $("#section1_link").val("");
+                        $('#section1_newtab').prop('checked', false);
                     } else {
                         $('#section1_description').summernote('code',newSectionData.description);
                         $("#section1_title").val(newSectionData.title);
                         $("#section1_link").val(newSectionData.link);
+                        $('#section1_newtab').prop('checked', newSectionData.newtab);
                     }
                 } else {                            // get failed
                     swal.fire({
@@ -488,10 +497,12 @@ jQuery(document).ready(function() {
                         $('#section2_description').summernote('code',"");
                         $("#section2_title").val("");
                         $("#section2_link").val("");
+                        $('#section2_newtab').prop('checked', false);
                     } else {
                         $('#section2_description').summernote('code',newSectionData.description);
                         $("#section2_title").val(newSectionData.title);
                         $("#section2_link").val(newSectionData.link);
+                        $('#section2_newtab').prop('checked', newSectionData.newtab);
                     }
                 } else {                            // get failed
                     swal.fire({
@@ -558,10 +569,12 @@ jQuery(document).ready(function() {
                         $('#section3_description').summernote('code',"");
                         $("#section3_title").val("");
                         $("#section3_link").val("");
+                        $('#section3_newtab').prop('checked', false);
                     } else {
                         $('#section3_description').summernote('code',newSectionData.description);
                         $("#section3_title").val(newSectionData.title);
                         $("#section3_link").val(newSectionData.link);
+                        $('#section3_newtab').prop('checked', newSectionData.newtab);
                     }
                 } else {                            // get failed
                     swal.fire({
@@ -628,10 +641,12 @@ jQuery(document).ready(function() {
                         $('#section4_description').summernote('code',"");
                         $("#section4_title").val("");
                         $("#section4_link").val("");
+                        $('#section4_newtab').prop('checked', false);
                     } else {
                         $('#section4_description').summernote('code',newSectionData.description);
                         $("#section4_title").val(newSectionData.title);
                         $("#section4_link").val(newSectionData.link);
+                        $('#section4_newtab').prop('checked', newSectionData.newtab);
                     }
                 } else {                            // get failed
                     swal.fire({

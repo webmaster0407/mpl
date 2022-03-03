@@ -39,6 +39,12 @@
 						<div class="form-group">
 							<label for="section1_link">{{ __('Link') }}</label>
 							<input class="form-control" type="url" value="https://" name="section1_link" id="section1_link" />
+						</div>
+						<div class="form-group">
+							<div class="form-check">
+								<input type="checkbox" class="form-check-input" id="section1_newtab">
+								<label class="form-check-label" for="section1_newtab">{{ __('Open in a new tab') }}</label>
+							</div>
 						</div>	
 						<div class="form-group">
 							<label >{{ __('Description')}}</label>
@@ -107,7 +113,13 @@
 						<div class="form-group">
 							<label for="section2_link">{{ __('Link') }}</label>
 							<input class="form-control" type="url" value="https://" name="section2_link" id="section2_link" />
-						</div>	
+						</div>
+						<div class="form-group">
+							<div class="form-check">
+								<input type="checkbox" class="form-check-input" id="section2_newtab">
+								<label class="form-check-label" for="section2_newtab">{{ __('Open in a new tab') }}</label>
+							</div>
+						</div>
 						<div class="form-group ">
 							<label>{{ __('Description')}}</label>
 							<div class="summernote" id="section2_description"></div>
@@ -175,7 +187,13 @@
 						<div class="form-group">
 							<label for="section3_link">{{ __('Link') }}</label>
 							<input class="form-control" type="url" value="https://" name="section3_link" id="section3_link" />
-						</div>	
+						</div>
+						<div class="form-group">
+							<div class="form-check">
+								<input type="checkbox" class="form-check-input" id="section3_newtab">
+								<label class="form-check-label" for="section3_newtab">{{ __('Open in a new tab') }}</label>
+							</div>
+						</div>
 						<div class="form-group">
 							<label>{{ __('Description')}}</label>
 							<div class="summernote" id="section3_description"></div>
@@ -243,6 +261,12 @@
 						<div class="form-group">
 							<label for="section4_link" >{{ __('Link') }}</label>
 							<input class="form-control" type="url" value="https://" name="section4_link" id="section4_link" />
+						</div>
+						<div class="form-group">
+							<div class="form-check">
+								<input type="checkbox" class="form-check-input" id="section4_newtab">
+								<label class="form-check-label" for="section4_newtab">{{ __('Open in a new tab') }}</label>
+							</div>
 						</div>	
 						<div class="form-group ">
 							<label >{{ __('Description')}}</label>
