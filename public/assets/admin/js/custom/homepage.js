@@ -430,7 +430,7 @@ jQuery(document).ready(function() {
                         $('#section1_description').summernote('code',newSectionData.description);
                         $("#section1_title").val(newSectionData.title);
                         $("#section1_link").val(newSectionData.link);
-                        $('#section1_newtab').prop('checked', newSectionData.newtab);
+                        $('#section1_newtab').prop('checked', newSectionData.newtab == "1" ? true : false);
                     }
                 } else {                            // get failed
                     swal.fire({
@@ -502,7 +502,7 @@ jQuery(document).ready(function() {
                         $('#section2_description').summernote('code',newSectionData.description);
                         $("#section2_title").val(newSectionData.title);
                         $("#section2_link").val(newSectionData.link);
-                        $('#section2_newtab').prop('checked', newSectionData.newtab);
+                        $('#section2_newtab').prop('checked', newSectionData.newtab == "1" ? true : false);
                     }
                 } else {                            // get failed
                     swal.fire({
@@ -574,7 +574,7 @@ jQuery(document).ready(function() {
                         $('#section3_description').summernote('code',newSectionData.description);
                         $("#section3_title").val(newSectionData.title);
                         $("#section3_link").val(newSectionData.link);
-                        $('#section3_newtab').prop('checked', newSectionData.newtab);
+                        $('#section3_newtab').prop('checked', newSectionData.newtab == "1" ? true : false);
                     }
                 } else {                            // get failed
                     swal.fire({
@@ -646,7 +646,7 @@ jQuery(document).ready(function() {
                         $('#section4_description').summernote('code',newSectionData.description);
                         $("#section4_title").val(newSectionData.title);
                         $("#section4_link").val(newSectionData.link);
-                        $('#section4_newtab').prop('checked', newSectionData.newtab);
+                        $('#section4_newtab').prop('checked', newSectionData.newtab == "1" ? true : false);
                     }
                 } else {                            // get failed
                     swal.fire({
