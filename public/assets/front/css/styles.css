@@ -837,6 +837,7 @@ header > .container {
 .btn {
     padding: 8px 36px;
     font-weight: 600;
+    cursor: pointer;
 }
 
 .btn-primary {
@@ -1051,6 +1052,48 @@ header > .container {
     display: none;
   }
 }
+/************************* Contact Form Modal ********************************/
+#contact-modal {
+  position: fixed;
+  z-index: 1000;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  background-color: rgba(0, 0, 0, .9);
+  padding-bottom: 10px;
+  display: none;
+}
+#contact-modal.active {
+  display: block;
+}
+.modal-header {
+  position: relative;
+  padding: 15px;
+}
+.modal-header .close-modal {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-weight: 400;
+}
+body.modal-open:after {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  content: '';
+  display: block;
+  background-color: rgba(0, 0, 0, .5);
+  z-index: 100;
+  top: 0;
+  left: 0;
+}
+
+@media (max-width: 767px) {
+  #contact-modal {
+    width: 95%;
+  }
+}
 /************************* Footer ********************************/
 #section-footertop {
   min-height: 500px;
@@ -1170,7 +1213,8 @@ footer:not(.footer-talent):after {
    margin-bottom: 10px;
    position: relative;
  }
- .form-group input {
+ .form-group input,
+ .form-group textarea {
    width: 100%;
    background: rgba(196, 196, 196, 0.4);
    color: #ffffff;

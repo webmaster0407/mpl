@@ -90,46 +90,65 @@
                             {{ __('We take pride in the rich diversity of our deliverables.')}}</p>
                     @endif
                 </div>
-                <a {{-- @if(isset($sectionData4->newtab) && $sectionData4->newtab == 1) target="_blank" @endif href="@if( isset($sectionData4->link) && ( $sectionData4->link !== '' ) ) {{ $sectionData4->link }} @else '#' @endif" --}} class="btn btn-primary">{{ __('Get Quote')}}</a>
+                <a {{-- @if(isset($sectionData4->newtab) && $sectionData4->newtab == 1) target="_blank" @endif href="@if( isset($sectionData4->link) && ( $sectionData4->link !== '' ) ) {{ $sectionData4->link }} @else '#' @endif" --}} class="btn btn-primary link-contactmodal">{{ __('Get Quote')}}</a>
             </div>
         </div>
     </div>
     <div class="typewriter"><img src="{{asset('assets/front/images/homepage/typewriter.jpg')}}" title="" alt="" /></div>
 </section>
-<section id="contact-modal" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+<div id="contact-modal">
+    <div class="modal-header">
+        <h4>{{ __('Contact') }}<a href="javascript:;" class="close-modal">X</a></h4>
+    </div>
     <div class="container">
-        <form style="z-index: 1000;">
-            <label for="contact_name">{{ __('Name')}} : </label>
-            <div class="form-group">
-                <input type="text" name="name" id="contact_name">
-                <div class="alert alert-danger name_error" style="display: none;">This field is required!</div>
+        <form>
+            <div class="row">
+                <div class="col-sm-6">
+                    <label for="contact_name">{{ __('Name')}} : </label>
+                    <div class="form-group">
+                        <input type="text" name="name" id="contact_name">
+                        <div class="alert alert-danger name_error" style="display: none;">This field is required!</div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <label for="contact_email">{{ __('Email')}} : </label>
+                    <div class="form-group">
+                        <input type="email" name="email" id="contact_email">
+                        <div class="alert alert-danger email_error" style="display: none;">This field is required!</div>
+                    </div>
+                </div>
             </div>
-            <label for="contact_email">{{ __('email')}} : </label>
-            <div class="form-group">
-                <input type="email" name="email" id="contact_email">
-                <div class="alert alert-danger email_error" style="display: none;">This field is required!</div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <label for="contact_phone">{{ __('Phone')}} : </label>
+                    <div class="form-group">
+                        <input type="tel" name="phone" id="contact_phone">
+                        <div class="alert alert-danger phone_error" style="display: none;">This field is required!</div>
+                    </div class="form-group">
+                </div>
+                <div class="col-sm-6">
+                    <label for="contact_subject">{{ __('Subject')}} : </label>
+                    <div class="form-group">
+                        <input type="text" name="subject" id="contact_subject">
+                        <div class="alert alert-danger subject_error" style="display: none;">This field is required!</div>
+                    </div>
+                </div>
             </div>
-            <label for="contact_phone">{{ __('phone')}} : </label>
-            <div class="form-group">
-                <input type="tel" name="phone" id="contact_phone">
-                <div class="alert alert-danger phone_error" style="display: none;">This field is required!</div>
-            </div class="form-group">
-            <label for="contact_subject">{{ __('subject')}} : </label>
-            <div class="form-group">
-                <input type="text" name="subject" id="contact_subject">
-                <div class="alert alert-danger subject_error" style="display: none;">This field is required!</div>
-            </div>
-            <label for="contact_message">{{ __('message')}} : </label>
-            <div class="form-group">
-                <textarea name="message" id="contact_message" rows="4"></textarea>
-                <div class="alert alert-danger message_error" style="display: none;">This field is required!</div>
+            <div class="row">
+                <div class="col">
+                    <label for="contact_message">{{ __('Message')}} : </label>
+                    <div class="form-group">
+                        <textarea name="message" id="contact_message" rows="4"></textarea>
+                        <div class="alert alert-danger message_error" style="display: none;">This field is required!</div>
+                    </div>
+                </div>
             </div>
             <div class="form-group">
-                <button type="button" id="contact_btn">Submit</button>
+                <a class="btn btn-primary" id="contact_btn">{{ __('Submit') }}</a>
             </div>
         </form>
     </div>
-</section>
+</div>
 <script type="text/javascript">
     var CONTACT_US_URL = "{{ route('ContactUsForm') }}";
 </script>

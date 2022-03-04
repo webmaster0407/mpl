@@ -6,10 +6,20 @@
     $('.mobile-menu-toggler, .mobile-menu-close').on('click', function() {
         $('.mobile-menu-wrapper').toggleClass('show');
     });
-    $('.photo-grid-container a').magnificPopup({
-        type: 'image',
-        gallery:{
-            enabled:true
-        }
+    if ($('.photo-grid-container').length > 0) {
+        $('.photo-grid-container a').magnificPopup({
+            type: 'image',
+            gallery:{
+                enabled:true
+            }
+        });
+    }
+    $('.link-contactmodal').on('click', function() {
+        $('#contact-modal').toggleClass('active');
+        $('body').toggleClass('modal-open');
+    });
+    $('.close-modal').on('click', function() {
+        $('#contact-modal').toggleClass('active');
+        $('body').toggleClass('modal-open');
     });
 })(jQuery);
