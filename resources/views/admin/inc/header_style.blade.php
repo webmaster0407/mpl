@@ -44,4 +44,7 @@
 @if(isset($page_sub_title) && ($page_sub_title == 'Update Profile'))
 <link href="{{ asset('assets/admin/css/custom/updateprofile.css')}}" rel="stylesheet" type="text/css" />
 @endif
+@if(isset($page_sub_title) && ($page_sub_title == 'Contacts'))
+<link href="{{ asset('assets/admin/css/custom/contacts.css')}}" rel="stylesheet" type="text/css" />
+@endif
 <!-- end::custom styles -->

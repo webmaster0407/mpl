@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\HomeController as adminHomeController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\ContactUsFormController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -64,13 +65,19 @@ Route::post('uploadPhotosBeforeRegister', ['as' => 'uploadPhotosBeforeRegister',
 Route::post('deletePhotosBeforeRegister', ['as' => 'deletePhotosBeforeRegister',    'uses' => 'App\Http\Controllers\HomeController@deletePhotosBeforeRegister']); 
 Route::post('deletePhotosWhenUserLeaveRegisterWindow', ['as' => 'deletePhotosWhenUserLeaveRegisterWindow',    'uses' => 'App\Http\Controllers\HomeController@deletePhotosWhenUserLeaveRegisterWindow']);
 Route::get('logout', ['as' => 'logout',    'uses' => 'App\Http\Controllers\HomeController@logout']);
+// end::HomeController Routes
 
-
+// begin:: ForgotPasswordController Routes
 Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
 Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post'); 
 Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
 Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
-// end::HomeController Routes
+// end:: ForgotPasswordController Routes
+
+// begin:: ContactUsFormController Routes
+Route::post('contact-us', [ContactUsFormController::class, 'ContactUsForm'])->name('ContactUsForm');
+// end:: ContactUsFormController Routes
+
 
 // begin::TalentController Routes 
 Route::get('findTalents', ['as' => 'viewFindTalent',    'uses' => 'App\Http\Controllers\TalentController@viewFindTalent']);
@@ -120,6 +127,14 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('updateProfile', ['as' => 'admin.updateProfile', 'uses' => 'App\Http\Controllers\admin\HomeController@updateProfile']);
     Route::post('doUpdateProfile', ['as' => 'admin.doUpdateProfile', 'uses' => 'App\Http\Controllers\admin\HomeController@doUpdateProfile']);
     // end::routes of HomeController
+
+    // begin::routes of ContactController
+    Route::get('contacts',      ['as' => 'admin.contacts',      'uses' => 'App\Http\Controllers\admin\ContactController@index']);
+    Route::get('getContactsData',      ['as' => 'admin.contacts.getContactsData',      'uses' => 'App\Http\Controllers\admin\ContactController@getContactsData']);
+    Route::get('getContactDetail',      ['as' => 'admin.contacts.getContactDetail',      'uses' => 'App\Http\Controllers\admin\ContactController@getContactDetail']);
+    Route::post('changeVisitedStates',      ['as' => 'admin.contacts.changeVisitedStates',      'uses' => 'App\Http\Controllers\admin\ContactController@changeVisitedStates']);
+    Route::post('deleteContacts',      ['as' => 'admin.contacts.deleteContacts',      'uses' => 'App\Http\Controllers\admin\ContactController@deleteContacts']);
+    // end::routes of ContactController
 
     // begin::routes of CmsController
     Route::group(['prefix' => 'cms'], function() {

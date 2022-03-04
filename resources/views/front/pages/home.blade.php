@@ -96,4 +96,41 @@
     </div>
     <div class="typewriter"><img src="{{asset('assets/front/images/homepage/typewriter.jpg')}}" title="" alt="" /></div>
 </section>
+<section id="contact-modal" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+    <div class="container">
+        <form style="z-index: 1000;">
+            <label for="contact_name">{{ __('Name')}} : </label>
+            <div class="form-group">
+                <input type="text" name="name" id="contact_name">
+                <div class="alert alert-danger name_error" style="display: none;">This field is required!</div>
+            </div>
+            <label for="contact_email">{{ __('email')}} : </label>
+            <div class="form-group">
+                <input type="email" name="email" id="contact_email">
+                <div class="alert alert-danger email_error" style="display: none;">This field is required!</div>
+            </div>
+            <label for="contact_phone">{{ __('phone')}} : </label>
+            <div class="form-group">
+                <input type="tel" name="phone" id="contact_phone">
+                <div class="alert alert-danger phone_error" style="display: none;">This field is required!</div>
+            </div class="form-group">
+            <label for="contact_subject">{{ __('subject')}} : </label>
+            <div class="form-group">
+                <input type="text" name="subject" id="contact_subject">
+                <div class="alert alert-danger subject_error" style="display: none;">This field is required!</div>
+            </div>
+            <label for="contact_message">{{ __('message')}} : </label>
+            <div class="form-group">
+                <textarea name="message" id="contact_message" rows="4"></textarea>
+                <div class="alert alert-danger message_error" style="display: none;">This field is required!</div>
+            </div>
+            <div class="form-group">
+                <button type="button" id="contact_btn">Submit</button>
+            </div>
+        </form>
+    </div>
+</section>
+<script type="text/javascript">
+    var CONTACT_US_URL = "{{ route('ContactUsForm') }}";
+</script>
 @endsection

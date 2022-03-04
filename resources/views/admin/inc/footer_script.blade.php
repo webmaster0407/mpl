@@ -36,4 +36,7 @@
 @if(isset($page_sub_title) && ($page_sub_title == 'Update Profile'))
 <script src="{{ asset('assets/admin/js/custom/updateprofile.js')}}"></script>
 @endif
+@if(isset($page_sub_title) && ($page_sub_title == 'Contacts'))
+<script src="{{ asset('assets/admin/js/custom/contacts.js')}}"></script>
+@endif
 <!-- end::custom scripts -->

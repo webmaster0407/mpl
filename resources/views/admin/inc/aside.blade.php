@@ -69,6 +69,16 @@
 						<span class="menu-text">{{ __('Categories')}}</span>
 					</a>
 				</li>
+				<li class="menu-section">
+					<h4 class="menu-text">{{ __('Contact Management')}}</h4>
+					<i class="menu-icon ki ki-bold-more-hor icon-md"></i>
+				</li>
+				<li class="menu-item" aria-haspopup="true">
+					<a href="{{ route('admin.contacts') }}" class="menu-link">
+						<i class="menu-icon flaticon-graphic"></i>
+						<span class="menu-text">{{ __('Contacts')}}</span>
+					</a>
+				</li>
 
 				<li class="menu-section">
 					<h4 class="menu-text">{{ __('User Management')}}</h4>

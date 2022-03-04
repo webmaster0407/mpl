@@ -33,5 +33,6 @@
 <script src="{{ asset('assets/front/js/jquery.blockUI.js')}}"></script>
 <script src="{{ asset('assets/front/js/sweetalert/sweetalert.min.js')}}"></script>
 <script src="{{ asset('assets/front/js/main.js')}}"></script>
+<script src="{{ asset('assets/front/js/contact.js')}}"></script>
 </body>
 </html>

@@ -1,0 +1,8 @@
+.contacts_button_group {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.contacts_button_group button {
+	margin-left: 20px;
+}
