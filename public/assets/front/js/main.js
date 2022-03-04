@@ -6,4 +6,10 @@
     $('.mobile-menu-toggler, .mobile-menu-close').on('click', function() {
         $('.mobile-menu-wrapper').toggleClass('show');
     });
+    $('.photo-grid-container a').magnificPopup({
+        type: 'image',
+        gallery:{
+            enabled:true
+        }
+    });
 })(jQuery);

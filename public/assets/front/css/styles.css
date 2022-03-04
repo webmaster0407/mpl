@@ -725,6 +725,28 @@ header > .container {
   display: inline-block;
 }
 
+.link-home {
+  background-color: transparent !important;
+}
+
+.icon-home {
+  background: transparent url(../../front/images/home.png) left top/contain no-repeat;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+}
+
+.icon-talent-back {
+  background: transparent url('../../front/images/back.png') center/contain no-repeat;
+  width: 62px;
+  height: 40px;
+  display: inline-block;
+}
+
+.link-whatsapp {
+  margin-left: 30px;
+}
+
 .icon-logout {
   background: transparent url(../../front/images/sign-out-alt.png) left top/contain no-repeat;
   width: 12px;
@@ -2162,6 +2184,15 @@ input:-webkit-autofill:active {
 
 .photo-grid-container {
   margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+}
+
+.photo-grid-container img {
+  width: 100%;
+  height: auto;
 }
 
 @media (max-width: 991px) {
@@ -2173,6 +2204,17 @@ input:-webkit-autofill:active {
   }
 }
 
+@media (max-width: 767px) {
+  .photo-grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 575px) {
+  .talent-meta {
+    display: block;
+  }
+}
 /********** Dropzone fix ****************/
 .dropzone .dz-preview .dz-remove {
   text-decoration: none;

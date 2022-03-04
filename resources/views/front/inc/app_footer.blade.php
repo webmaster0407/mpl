@@ -9,6 +9,7 @@
   crossorigin="anonymous"></script>
 <script src="{{ asset('assets/front/js/jquery.blockUI.js')}}"></script>
 <script src="{{ asset('assets/front/js/sweetalert/sweetalert.min.js')}}"></script>
+<script src="{{ asset('assets/front/js/magnific/jquery.magnific-popup.min.js')}}"></script>
 <script src="{{ asset('assets/front/js/main.js')}}"></script>
 
 @if(isset($page_sub_title) && ($page_sub_title == 'Find By Category'))

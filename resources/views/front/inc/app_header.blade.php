@@ -3,6 +3,9 @@
         <a href="{{ route('base_url') }}"><img src="{{ asset('assets/front/images/logo.png')}}" alt="Logo" title="Logo"/></a>
         <div class="header-right">
             <ul id="main-menu">
+                <li>
+                    <a href="/" class="link-home"><i class="icon-home"></i></a>
+                </li>
                 @if( Auth::user() !== null )
                 <li class="dropdown">
                     <a href="javascript:void(0)">{{ __('My Account')}}<i class="icon-arrowdown"></i></a>
@@ -82,6 +85,9 @@
             <div class="mobile-menu-wrapper">
                 <a href="javascript:;" class="mobile-menu-close">X</a>
                 <ul id="mobile-menu">
+                    <li>
+                        <a href="/">{{ __('Home') }}</a>
+                    </li>
                     @if( Auth::user() !== null )
                     <li>
                         <a href="{{ route('viewFindTalent') }}" class="logout-link">{{ __('Find Talents')}}</a>

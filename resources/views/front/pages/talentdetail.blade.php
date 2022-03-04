@@ -11,13 +11,15 @@
                 <span class="talent-category">{{__($talent_detail_info->category)}}</span>
                 <h1 class="talent-fullname">{{ $talent_detail_info->name }}</h1>
             </div>
-            @if( (Auth::user() !== null) && (Auth::user()->role == 'client'))
+            
             <div class="contact-info">
-                <a href="{{ 'https://wa.me/' . $talent_detail_info->phone}}"><i class="icon-whatsapp"></i></a>
+                <a href="{{ url()->previous() }}" alt="Back" title="Back"><i class="icon-talent-back"></i></a>
+                @if( (Auth::user() !== null) && (Auth::user()->role == 'client'))
+                <a href="{{ 'https://wa.me/' . $talent_detail_info->phone}}" class="link-whatsapp"><i class="icon-whatsapp"></i></a>
                 <span class="vseparator"></span>
                 <a href="{{('mailto:' . $talent_detail_info->email )}}"><i class="icon-envelop-lg"></i></a>
+                @endif
             </div>
-            @endif
         </div>
         
         <div class="personal-information-wrapper">
@@ -52,33 +54,22 @@
         </div>
         <?php // echo $talent_detail_info->photo_paths ; ?>
         <div class="photo-grid-container">
-            <div class="grid-row">
-                @if( isset($talent_photos) && (count($talent_photos) > 0) )
-                <div class="column">
-                    <?php 
-                        $item_cnt = count($talent_photos) / 2;
-                        $lp = 0;
-                        for( $lp = 0; $lp < $item_cnt; $lp++) {
-                    ?>
-                        <img src="{{ $talent_photos[$lp]->path }}" alt="" title="" />
-                    <?php
-                        }
-                    ?>
-                </div>
-                <div class="column">
-                    <?php 
-                        for( ; $lp < count($talent_photos); $lp++) {
-                    ?>
-                        <img src="{{ $talent_photos[$lp]->path }}" alt="" title="" />
-                    <?php
-                        }
-                    ?>
-                </div>   
-                @else
-                    <h5>{{ __('No photos')}}</h5>    
-                @endif
-
-            </div>
+            @if( isset($talent_photos) && (count($talent_photos) > 0) )
+                <?php
+                    for( $lp = 0; $lp < count($talent_photos); $lp++) {    
+                        $path = route('base_url') . '/' . $talent_photos[$lp]->path;
+                        $path_array = explode('/', $path);
+                        $cnt = count($path_array);
+                        $path_array[$cnt-2] = $path_array[$cnt-2] . '/thumbnail';
+                        $thumbnailpath = implode('/', $path_array);
+                ?>
+                    <a href="{{ $talent_photos[$lp]->path }}"><img src="{{ $thumbnailpath }}" alt="" title="" /></a>
+                <?php
+                    }
+                ?>
+            @else
+                <h5 class="text-center">{{ __('No photos')}}</h5>    
+            @endif
         </div>
     </div>
 </section>

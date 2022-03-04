@@ -32,6 +32,9 @@
         </a>
         <div class="header-right">
             <ul id="main-menu">
+                <li>
+                    <a href="/" class="link-home"><i class="icon-home"></i></a>
+                </li>
                 <?php 
                     if ($prefix === 'en') {
                 ?>
