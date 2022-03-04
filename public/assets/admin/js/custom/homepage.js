@@ -45,7 +45,7 @@ jQuery(document).ready(function() {
         var desc = $('#section1_description').summernote('code');
         var title = $("#section1_title").val();
         var link = $("#section1_link").val();
-        var newtab = $("#section1_newtab").val() == "on" ? 1 : 0;
+        var newtab = $("#section1_newtab").prop('checked') ? "1" : "0";
 
 
         $.ajax({
@@ -135,7 +135,7 @@ jQuery(document).ready(function() {
         var desc = $('#section2_description').summernote('code');
         var title = $("#section2_title").val();
         var link = $("#section2_link").val();
-        var newtab = $("#section2_newtab").val() == "on" ? 1 : 0;
+        var newtab = $("#section2_newtab").prop('checked') ? "1" : "0";
 
         $.ajax({
             headers: {
@@ -223,7 +223,7 @@ jQuery(document).ready(function() {
         var desc = $('#section3_description').summernote('code');
         var title = $("#section3_title").val();
         var link = $("#section3_link").val();
-        var newtab = $("#section3_newtab").val() == "on" ? 1 : 0;
+        var newtab = $("#section3_newtab").prop('checked') ? "1" : "0";
 
 
         $.ajax({
@@ -312,7 +312,7 @@ jQuery(document).ready(function() {
         var desc = $('#section4_description').summernote('code');
         var title = $("#section4_title").val();
         var link = $("#section4_link").val();
-        var newtab = $("#section4_newtab").val() == "on" ? 1 : 0;
+        var newtab = $("#section4_newtab").prop('checked') ? "1" : "0";
 
 
         $.ajax({
