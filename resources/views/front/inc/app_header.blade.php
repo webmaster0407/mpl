@@ -82,16 +82,23 @@
                 ?>
                 <!-- end::language bar -->
             </ul>
+            <!-- begin::mobile home  -->
+            <ul class="mobile-home">
+                <li>
+                    <a href="/" class="link-home"><i class="icon-home"></i></a>
+                </li>
+            </ul>
+            <!-- end::mobile home  -->
             <div class="mobile-menu-wrapper">
                 <a href="javascript:;" class="mobile-menu-close">X</a>
                 <ul id="mobile-menu">
                     <li>
                         <a href="/">{{ __('Home') }}</a>
                     </li>
-                    @if( Auth::user() !== null )
                     <li>
                         <a href="{{ route('viewFindTalent') }}" class="logout-link">{{ __('Find Talents')}}</a>
                     </li>
+                    @if( Auth::user() !== null )
                     <li>
                         <a href="{{ route('profile') }}" class="logout-link">{{ __('My Account')}}</a>
                     </li>

@@ -795,6 +795,12 @@ header > .container {
   font-size: 30px;
 }
 
+/* begin::mobile-home  */
+.mobile-home {
+  display: none;
+}
+/* end::mobile-home  */
+
 @media (min-width: 768px) {
   .mobile-menu-toggler {
     display: none;
@@ -808,6 +814,27 @@ header > .container {
   #main-menu {
     display: none;
   }
+
+  /* begin::mobile-home  */
+  .mobile-home {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .mobile-home > li {
+    margin-right: 10px;
+    position: relative;
+  }
+  .mobile-home > li > a {
+    padding: 5px 15px;
+    transition: all .3s;
+    display: flex;
+    align-items: center;
+    height: 40px;
+  }
+  /* end::mobile-home  */
 }
 
 /******************** Welcome Section **********************/

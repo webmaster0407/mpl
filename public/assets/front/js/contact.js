@@ -78,6 +78,17 @@ var contactUsHandlers = function() {
 
             var rlt = true;
 
+            var validateEmail =  function (elementValue){      
+               var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+               return emailPattern.test(elementValue); 
+            } 
+
+            var validatePhoneNumber = function(input_str) {
+                var re = /^[\+]?[(]?[0-9]{3}[)]?[-]?[\s\.]?[0-9]{3}[-]?[\s\.]?[0-9]{2,5}$/im;
+
+                return re.test(input_str);
+            }
+
             if ( name === undefined || name === null || name === "" ) {
             	rlt = false;
 				$('.name_error').fadeIn();
@@ -92,12 +103,26 @@ var contactUsHandlers = function() {
 					$('.email_error').fadeOut();
 				}, 3000);
             }
+            if ( validateEmail(email) === false ) {
+                rlt = false;
+                $('.valid_email_error').fadeIn();
+                setTimeout(() => {
+                    $('.valid_email_error').fadeOut();
+                }, 3000);
+            }
             if ( phone === undefined || phone === null || phone === "" ) {
             	rlt = false;
 				$('.phone_error').fadeIn();
 				setTimeout(() => {
 					$('.phone_error').fadeOut();
 				}, 3000);
+            }
+            if ( validatePhoneNumber(phone) === false ) {
+                rlt = false;
+                $('.valid_phone_error').fadeIn();
+                setTimeout(() => {
+                    $('.valid_phone_error').fadeOut();
+                }, 3000);
             }
             if ( subject === undefined || subject === null || subject === "" ) {
             	rlt = false;

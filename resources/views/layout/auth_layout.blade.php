@@ -16,68 +16,14 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/front/images/favicon//favicon-32x32.png')}}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/front/images/favicon//favicon-16x16.png')}}">
     <link rel="manifest" href="{{ asset('assets/front/images/favicon//site.webmanifest')}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/front/js/sweetalert/sweetalert.css')}}">
+    <link href="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('assets/front/css/styles.css')}}">
     </head>
 <body>
-
-<?php 
-    $en_flg_img_src = asset('assets/front/images/en.png');
-    $cn_flg_img_src = asset('assets/front/images/zh-cn.png');
-    $hk_flg_img_src = asset('assets/front/images/zh-hk.png');
-?>
-<header>
-    <div class="container d-flex justify-content-between align-items-center">
-        <a href="{{ route('base_url') }}">
-        	<img src="{{ asset('assets/front/images/logo.png')}}" alt="Logo" title="Logo" class="visible-desktop" />
-        	<img src="{{ asset('assets/front/images/footer-logo.png')}}" width="131" class="hidden-desktop" alt="Logo" title="Logo" />
-        </a>
-        <div class="header-right">
-            <ul id="main-menu">
-                <li>
-                    <a href="/" class="link-home"><i class="icon-home"></i></a>
-                </li>
-                <?php 
-                    if ($prefix === 'en') {
-                ?>
-                    <li class="dropdown language-switcher">
-                        <a href="{{ route('en') }}">
-                            <img src="{{ $en_flg_img_src }}" width="21"><i class="icon-arrowdown"></i>
-                        </a>
-                        <ul>
-                            <li><a href="{{ route('zh-cn') }}"><img src="{{ $cn_flg_img_src }}" width="21"></a></li>
-                            <li><a href="{{ route('zh-hk') }}"><img src="{{ $hk_flg_img_src }}" width="21"></a></li>
-                        </ul>
-                    </li>
-                <?php 
-                    } else if ($prefix === 'cn') {
-                ?>
-                    <li class="dropdown language-switcher">
-                        <a href="{{ route('zh-cn') }}">
-                            <img src="{{ $cn_flg_img_src }}" width="21"><i class="icon-arrowdown"></i>
-                        </a>
-                        <ul>
-                            <li><a href="{{ route('zh-hk') }}"><img src="{{ $hk_flg_img_src }}" width="21"></a></li>
-                            <li><a href="{{ route('en') }}"><img src="{{ $en_flg_img_src }}" width="21"></a></li>
-                        </ul>
-                    </li>
-                <?php 
-                    } else {
-                ?>
-                    <li class="dropdown language-switcher">
-                        <a href="{{ route('zh-hk') }}">
-                            <img src="{{ $hk_flg_img_src }}" width="21"><i class="icon-arrowdown"></i>
-                        </a>
-                        <ul>
-                            <li><a href="{{ route('zh-cn') }}"><img src="{{ $cn_flg_img_src }}" width="21"></a></li>
-                            <li><a href="{{ route('en') }}"><img src="{{ $en_flg_img_src }}" width="21"></a></li>
-                        </ul>
-                    </li>
-                <?php 
-                    }
-                ?>
-            </ul>
-        </div>
-    </div>
-</header>
 
 @yield('content')
 

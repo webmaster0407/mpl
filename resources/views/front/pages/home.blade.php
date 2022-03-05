@@ -115,6 +115,7 @@
                     <div class="form-group">
                         <input type="email" name="email" id="contact_email">
                         <div class="alert alert-danger email_error" style="display: none;">This field is required!</div>
+                        <div class="alert alert-danger valid_email_error" style="display: none;">Input valid email!</div>
                     </div>
                 </div>
             </div>
@@ -124,6 +125,7 @@
                     <div class="form-group">
                         <input type="tel" name="phone" id="contact_phone">
                         <div class="alert alert-danger phone_error" style="display: none;">This field is required!</div>
+                        <div class="alert alert-danger valid_phone_error" style="display: none;">Input valid phone Number!</div>
                     </div class="form-group">
                 </div>
                 <div class="col-sm-6">
