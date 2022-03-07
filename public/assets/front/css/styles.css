@@ -971,9 +971,21 @@ header > .container {
     background-color: #ffffff;
     left: calc(100% + 30px);
 }
+.buttons a:last-child {
+  margin-left: 20px;
+}
+
 @media (max-width: 575px) {
   #section-talentservice {
     min-height: 600px;
+  }
+  .buttons {
+    display: flex;
+    flex-direction: column;
+  }
+  .buttons a {
+    width: 200px;
+    margin: 0 auto 30px !important;
   }
 }
 /************************* Copywriting Section ********************************/

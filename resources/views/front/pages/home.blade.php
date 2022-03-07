@@ -20,7 +20,6 @@
                 <p>{{__('A trusted Hong Kong event artist agency which offers professional model, DJ, promoter, dancer, as well as MC booking. Having the footprint across Asia, we are the best partner for your next lorem ipsum events.')}}</p>
             @endif
         </div>
-        <a @if(isset($sectionData1->newtab) && $sectionData1->newtab == 1) target="_blank" @endif href="@if( isset($sectionData1->link) && ( $sectionData1->link !== '' ) ) {{ $sectionData1->link }} @else '#' @endif" class="btn btn-primary">{{ __('JOIN NOW')}}</a>
     </div>
 </section>
 <section id="section-visualservice" class="full-page d-flex flex-column justify-content-center">
@@ -58,7 +57,10 @@
                <p>{{ __('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed tortor vitae purus finibus imperdiet eget at magna. Vivamus condimentum, odio sed pretium posuere, sem mauris placerat nulla, ac consectetur nisl libero vel orci. In ut nisl odio. Aliquam sed molestie est. Praesent iaculis, nibh vel facilisis mollis, felis nunc tristique mi, nec maximus lorem nunc ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; In vel ante et velit porttitor gravida sed quis ipsum. Fusce in quam libero. Sed nec fringilla tellus, lobortis cursus lacus. Vestibulum nec molestie ex. Integer a metus ut enim convallis lacinia.')}}</p>
             @endif
         </div>
-        <a @if(isset($sectionData3->newtab) && $sectionData3->newtab == 1) target="_blank" @endif href="@if( isset($sectionData3->link) && ( $sectionData3->link !== '' ) ) {{ $sectionData3->link }} @else '#' @endif" class="btn btn-primary">{{ __('Find Talent')}}</a>
+        <div class="buttons">
+            <a @if(isset($sectionData3->newtab) && $sectionData3->newtab == 1) target="_blank" @endif href="@if( isset($sectionData3->link) && ( $sectionData3->link !== '' ) ) {{ $sectionData3->link }} @else '#' @endif" class="btn btn-primary">{{ __('Find Talent')}}</a>
+            <a @if(isset($sectionData1->newtab) && $sectionData1->newtab == 1) target="_blank" @endif href="@if( isset($sectionData1->link) && ( $sectionData1->link !== '' ) ) {{ $sectionData1->link }} @else '#' @endif" class="btn btn-primary">{{ __('JOIN NOW')}}</a>
+        </div>
     </div>
 </section>
 <section id="section-copywriting" class="d-flex flex-column justify-content-end">
