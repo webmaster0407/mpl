@@ -1294,7 +1294,8 @@ input:-webkit-autofill:active {
   margin-top: 25px;
   margin-bottom: 12px;
 }
-.social-logins {
+.social-logins .social-logins-desc label,
+.social-logins ul {
   display: none;
 }
 .social-logins-desc {
