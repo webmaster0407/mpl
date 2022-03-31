@@ -59,7 +59,9 @@
         </div>
         <div class="buttons">
             <a @if(isset($sectionData3->newtab) && $sectionData3->newtab == 1) target="_blank" @endif href="@if( isset($sectionData3->link) && ( $sectionData3->link !== '' ) ) {{ $sectionData3->link }} @else '#' @endif" class="btn btn-primary">{{ __('Find Talent')}}</a>
+            @if(Auth::user() === null)
             <a @if(isset($sectionData1->newtab) && $sectionData1->newtab == 1) target="_blank" @endif href="@if( isset($sectionData1->link) && ( $sectionData1->link !== '' ) ) {{ $sectionData1->link }} @else '#' @endif" class="btn btn-primary">{{ __('JOIN NOW')}}</a>
+            @endif
         </div>
     </div>
 </section>
