@@ -144,19 +144,19 @@ class TalentController extends Controller
             ->first();
         $path = public_path() . '/' . $photo->path;
 
-        if ( file_exists($path) ) {
+        // if ( file_exists($path) ) {
             @unlink($path);
             DB::table('photos')->where('id', '=', $photo_id)->delete();
             $data = [
                 'status' => 'success',
                 'message' => 'Photo deleted successfully!'
             ];
-        } else {
-            $data = [
-                'status' => 'failed',
-                'message' => 'File does not exist'
-            ];
-        }
+        // } else {
+        //     $data = [
+        //         'status' => 'failed',
+        //         'message' => 'File does not exist'
+        //     ];
+        // }
         echo json_encode($data);
     }
 

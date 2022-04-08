@@ -500,17 +500,17 @@ class HomeController extends Controller
                 if ( $name !== "" ) {
                     $path = 'storage/uploads/photos/' . $name;
                     $thumbnailpath = 'storage/uploads/photos/thumbnail/' . $name;
-                    if ( file_exists( $path ) && file_exists( $thumbnailpath ) ) {
+                    // if ( file_exists( $path ) && file_exists( $thumbnailpath ) ) {
                         @unlink($path);
                         @unlink($thumbnailpath);
-                    } else {
-                        $data = [
-                            'status' => 'failed',
-                            'message' => 'file does not exist'
-                        ];
-                        echo json_encode($data);
-                        return; 
-                    }
+                    // } else {
+                    //     $data = [
+                    //         'status' => 'failed',
+                    //         'message' => 'file does not exist'
+                    //     ];
+                    //     echo json_encode($data);
+                    //     return; 
+                    // }
                 } 
             }
         }
@@ -532,7 +532,7 @@ class HomeController extends Controller
         $cnt = count($path_array);
         $path_array[$cnt-2] = $path_array[$cnt-2] . '/thumbnail';
         $thumbnailpath = implode('/', $path_array);
-        if ( file_exists( $path ) && file_exists( $thumbnailpath ) ) {
+        // if ( file_exists( $path ) && file_exists( $thumbnailpath ) ) {
             @unlink($path);
             @unlink($thumbnailpath);
             $data = [
@@ -541,13 +541,13 @@ class HomeController extends Controller
             ];
             echo json_encode($data);
             return;
-        }
-        $data = [
-            'status' => 'failed',
-            'message' => 'File does not exist'
-        ];
-        echo json_encode($data);
-        return;  
+        // }
+        // $data = [
+        //     'status' => 'failed',
+        //     'message' => 'File does not exist'
+        // ];
+        // echo json_encode($data);
+        // return;  
     }
 
     /********************     Reset password      ****************/

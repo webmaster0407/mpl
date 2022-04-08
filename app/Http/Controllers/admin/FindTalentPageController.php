@@ -102,7 +102,7 @@ class FindTalentPageController extends Controller
         $path_array[$cnt-2] = $path_array[$cnt - 2] . '/thumbnail';
         $thumbnailpath = implode('/', $path_array);
 
-        if ( file_exists( $path ) && file_exists( $thumbnailpath ) ) {
+        // if ( file_exists( $path ) && file_exists( $thumbnailpath ) ) {
             @unlink($path);
             @unlink($thumbnailpath);
             Ftpages::where('id', '=', $id)->delete();
@@ -110,12 +110,12 @@ class FindTalentPageController extends Controller
                 'status' => 'success',
                 'message' => 'Image deleted successfully!'
             ];
-        } else {
-            $data = [
-                'status' => 'failed',
-                'message' => 'File does not exist'
-            ];
-        }
+        // } else {
+        //     $data = [
+        //         'status' => 'failed',
+        //         'message' => 'File does not exist'
+        //     ];
+        // }
 
         echo json_encode($data);
     }
